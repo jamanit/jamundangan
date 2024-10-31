@@ -25,7 +25,7 @@
     <link href="{{ asset('/') }}invitation_templates/jm-calm/dist/assets/costume-style.css" rel="stylesheet" />
 </head>
 
-<body class="flex h-screen w-full items-center justify-center bg-primary-red-400 font-worksans">
+<body class="flex h-screen w-full items-center justify-center font-worksans @stack('body-classes')">
 
     @yield('content')
 
