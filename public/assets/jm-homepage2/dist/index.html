@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JM HomePage 2</title>
+
+    <link rel="icon" href="storage/image/logo.jpg" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="storage/image/logo.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
+    <link href="assets/fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
+    <link href="assets/aos/dist/aos.css" rel="stylesheet" />
+    <link href="assets/fancyapps/ui/dist/fancybox/fancybox.css" rel="stylesheet" />
+    <script src="assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <link href="assets/tailwind-output.css" rel="stylesheet" />
+    <link href="assets/costume-style.css" rel="stylesheet" />
+</head>
+
+<body class="font-worksans">
+    <nav id="navbar" class="fixed top-0 w-full z-20 bg-transparent navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <img src="storage/image/logo.jpg" alt="" class="w-10 rounded-lg">
+                        <div id="brand-name" class="text-lg text-white hover:text-purple-500 font-semibold">
+                            JM HomePage 2</div>
+                    </a>
+                </div>
+                <div id="navbar-links" class="hidden md:flex space-x-8 items-center font-semibold">
+                    <a href="#home" class="text-white hover:text-purple-500">Home</a>
+                    <a href="#services" class="text-white hover:text-purple-500">Services</a>
+                    <a href="#template" class="text-white hover:text-purple-500">Template</a>
+                    <a href="#about" class="text-white hover:text-purple-500">About Us</a>
+                    <a href="#contact" class="text-white hover:text-purple-500">Contact</a>
+                    <a href="#" class="text-white hover:text-purple-500">Register</a>
+                    <a href="#" class="text-white hover:text-purple-500">Login</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-white hover:text-purple-500 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Sliding from left) -->
+        <div id="mobile-menu"
+            class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg slide-left transform transition duration-300 ease-out md:hidden mx-auto px-4">
+            <div class="flex justify-between h-16 mb-4">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-2">
+                        <img src="storage/image/logo.jpg" alt="" class="w-10 rounded-lg">
+                        <div id="brand-name" class="text-lg text-gray-800 hover:text-purple-500 font-semibold">
+                            JM HomePage 2</div>
+                    </a>
+                </div>
+                <button id="close-menu-button" class="text-gray-800 hover:text-purple-500">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="font-semibold">
+                <a href="#home" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Home</a>
+                <a href="#services" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Services</a>
+                <a href="#template" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Template</a>
+                <a href="#about" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">About Us</a>
+                <a href="#contact" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Contact</a>
+                <a href="#" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Register</a>
+                <a href="#" class="mobile-menu-link block text-gray-800 hover:text-purple-500 mb-3">Login</a>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay"></div>
+    </nav>
+
+    <!-- cover -->
+    <section id="home" class="relative w-full h-screen mt-0 overflow-hidden bg-gray-800">
+        <div class="relative w-full h-full">
+            <div class="slide absolute w-full h-full overflow-hidden">
+                <img src="storage/image/cover-1.svg" alt="Cover" class="w-full h-full object-cover object-left">
+                <div class="absolute inset-0 flex items-center justify-center text-center z-10">
+                    <div class="bg-black bg-opacity-50 rounded-lg p-4 m-8" data-aos="fade-in">
+                        <div class="text-gray-200 text-base sm:text-xl lg:text-2xl font-semibold">
+                            "Selamat datang di dunia undangan digital kami!<br>
+                            Bergabunglah dengan kami untuk merayakan momen-momen berharga dengan cara yang lebih
+                            modern dan mudah."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+                    <a href="#services" class="text-white text-3xl" data-aos="fade-down" data-aos-offset="50">
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- services -->
+    <section id="services" class="relative w-full pt-16 bg-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <h2 class="text-3xl text-center font-bold text-purple-400 mb-4">Services</h2>
+
+            <!-- Card Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Desain yang Menarik</h3>
+                        <p class="text-gray-600">Kustomisasi undangan Anda dengan desain yang indah.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Pengiriman Digital</h3>
+                        <p class="text-gray-600">Kirim undangan Anda secara digital dengan mudah.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Manajemen Acara</h3>
+                        <p class="text-gray-600">Kelola acara Anda dengan mudah.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Kustomisasi Fleksibel</h3>
+                        <p class="text-gray-600">Sesuaikan setiap detail undangan Anda sesuai keinginan.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Desain Responsif</h3>
+                        <p class="text-gray-600">Tampilan undangan akan menyesuaikan dengan berbagai perangkat, dari
+                            desktop hingga ponsel.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Fitur Streaming</h3>
+                        <p class="text-gray-600">Lakukan siaran langsung acara Anda untuk tamu yang tidak dapat hadir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Pesan Tamu</h3>
+                        <p class="text-gray-600">Tamu dapat meninggalkan pesan dan ucapan langsung melalui platform
+                            kami.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Galeri Foto</h3>
+                        <p class="text-gray-600">Tampilkan momen-momen indah melalui galeri foto yang dapat diakses oleh
+                            tamu.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Hadiah dari Tamu</h3>
+                        <p class="text-gray-600">Tamu dapat memberikan hadiah melalui rekening atau pengiriman paket.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Fitur Musik</h3>
+                        <p class="text-gray-600">Sediakan lagu-lagu favorit untuk menciptakan suasana yang lebih meriah.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Pengalaman Pengguna yang Luar Biasa</h3>
+                        <p class="text-gray-600">Kami fokus pada pengalaman pengguna untuk memastikan kepuasan Anda.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4 flex items-center" data-aos="fade-up">
+                    <div class="text-purple-400 text-5xl mr-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Dukungan Pelanggan</h3>
+                        <p class="text-gray-600">Kami siap membantu Anda setiap hari mulai pukul 09:00 - 20:00 WIB.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1"
+                d="M0,224L48,208C96,192,192,160,288,160C384,160,480,192,576,213.3C672,235,768,245,864,234.7C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </section>
+
+    <!-- template -->
+    <section id="template" class="relative w-full pt-16 bg-white">
+        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <h2 class="text-3xl text-center font-bold text-purple-400 mb-8">Template</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div
+                    class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
+                    <div
+                        class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg">
+                        20% Diskon
+                    </div>
+                    <div class="w-full h-56 flex items-center justify-center">
+                        <img src="storage/template/sideright-golden-brown.jpg" alt="Deskripsi Gambar"
+                            class="object-contain max-h-full max-w-full p-1">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-semibold">Sideright Golden Brown</h3>
+                        <p class="text-xs text-gray-600">Kategori Template</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-600 line-through">Rp. 70.000</p>
+                            <p class="text-gray-600">-</p>
+                            <p class="text-green-500 font-semibold">Rp. 56.000</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between">
+                        <a href="#" target="_blank"
+                            class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                            Lihat Contoh
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
+                    <div
+                        class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg">
+                        20% Diskon
+                    </div>
+                    <div class="w-full h-56 flex items-center justify-center">
+                        <img src="storage/template/calm-red.jpg" alt="Deskripsi Gambar"
+                            class="object-contain max-h-full max-w-full p-1">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-semibold">Nama Template</h3>
+                        <p class="text-xs text-gray-600">Kategori Template</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-600 line-through">Rp. 70.000</p>
+                            <p class="text-gray-600">-</p>
+                            <p class="text-green-500 font-semibold">Rp. 56.000</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between">
+                        <a href="#" target="_blank"
+                            class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                            Lihat Contoh
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
+                    <div
+                        class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg">
+                        20% Diskon
+                    </div>
+                    <div class="w-full h-56 flex items-center justify-center">
+                        <img src="storage/template/calm-green.jpg" alt="Deskripsi Gambar"
+                            class="object-contain max-h-full max-w-full p-1">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-semibold">Nama Template</h3>
+                        <p class="text-xs text-gray-600">Kategori Template</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-600 line-through">Rp. 70.000</p>
+                            <p class="text-gray-600">-</p>
+                            <p class="text-green-500 font-semibold">Rp. 56.000</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between">
+                        <a href="#" target="_blank"
+                            class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                            Lihat Contoh
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="shadow-md border border-gray-300 transition-transform transform duration-300 hover:scale-105 rounded-lg relative">
+                    <div
+                        class="absolute top-2 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 shadow-lg rounded-l-lg">
+                        20% Diskon
+                    </div>
+                    <div class="w-full h-56 flex items-center justify-center">
+                        <img src="storage/template/calm-blue.jpg" alt="Deskripsi Gambar"
+                            class="object-contain max-h-full max-w-full p-1">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-base font-semibold">Nama Template</h3>
+                        <p class="text-xs text-gray-600">Kategori Template</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-gray-600 line-through">Rp. 70.000</p>
+                            <p class="text-gray-600">-</p>
+                            <p class="text-green-500 font-semibold">Rp. 56.000</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex justify-between">
+                        <a href="#" target="_blank"
+                            class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                            Lihat Contoh
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-4">
+                <button id="load-more-templates"
+                    class="rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                    Lihat templat lainnya
+                </button>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#d1d5db" fill-opacity="1"
+                d="M0,96L48,122.7C96,149,192,203,288,218.7C384,235,480,213,576,192C672,171,768,149,864,154.7C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="relative w-full pt-16 bg-gray-300">
+        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <h2 class="text-3xl text-center font-bold text-purple-400 mb-4">About Us</h2>
+            <div class="text-gray-700 leading-relaxed" data-aos="zoom-in">
+                <p class="text-justify">
+                    Jamundangan adalah platform undangan digital yang didirikan oleh
+                    Jaman IT pada 23 Oktober 2024. Kami hadir untuk membawa inovasi dalam cara orang merayakan momen
+                    spesial
+                    mereka. Dengan latar belakang di bidang teknologi dan desain, kami memahami pentingnya memberikan
+                    pengalaman yang mulus dan menyenangkan bagi pengguna.
+
+                    Visi kami adalah untuk menciptakan solusi undangan yang praktis, estetis, dan ramah lingkungan. Kami
+                    percaya bahwa setiap momen berharga, baik itu pernikahan, ulang tahun, atau acara khusus lainnya,
+                    pantas
+                    dirayakan dengan cara yang unik dan berarti.
+
+                    Dengan berbagai fitur canggih yang kami tawarkan, termasuk desain kustom, interaktivitas, dan
+                    kemudahan
+                    pengiriman, kami berkomitmen untuk memberikan pengalaman yang tidak hanya modern tetapi juga sesuai
+                    dengan kebutuhan zaman.
+
+                    Kami di Jamundangan percaya bahwa teknologi dapat membantu menyatukan orang-orang, dan kami
+                    bersemangat
+                    untuk menjadi bagian dari perjalanan spesial Anda.
+                </p>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1"
+                d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="relative w-full py-16 bg-white">
+        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <h2 class="text-3xl text-center font-bold text-purple-400 mb-8">Contact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Kolom Kiri: Formulir -->
+                <div data-aos="fade-right">
+                    <form id="message-form" onsubmit="sendMessage(event, 'bg-purple-500')">
+                        <div class="mb-4">
+                            <label for="name"
+                                class="mb-2 block text-left text-sm font-semibold text-gray-800">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Name"
+                                class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="email"
+                                class="mb-2 block text-left text-sm font-semibold text-gray-800">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Enter Email"
+                                class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="message"
+                                class="mb-2 block text-left text-sm font-semibold text-gray-800">Message</label>
+                            <textarea name="message" id="message" placeholder="Enter Message"
+                                class="w-full rounded-lg border border-purple-400 p-3 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                                rows="2"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="mt-4 w-full rounded-lg bg-purple-400 p-2 text-base text-white hover:bg-purple-500">
+                            <i class="fas fa-paper-plane"></i> SEND
+                        </button>
+                    </form>
+                </div>
+                <!-- Kolom Kanan: Media Sosial -->
+                <div class="flex flex-col items-start" data-aos="fade-left">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-800 hover:text-purple-400 text-2xl">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="#" class="text-gray-800 hover:text-purple-400 text-3xl">
+                            <i class="fab fa-square-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-800 hover:text-purple-400 text-3xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+
+                    <div class="mb-4 text-gray-800">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, nam.
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15952.894785100616!2d103.55526074999999!3d-1.6199614999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e25880438e16925%3A0x2d5dd3bb1deb2c78!2sSPBU%20Pertamina%2024.361.01!5e0!3m2!1sid!2sid!4v1729425818628!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm">Copyright &copy; 2024 Jaman IT. All Rights Reserved.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-purple-400 text-xl">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href=" #" class="hover:text-purple-400 text-2xl">
+                        <i class="fab fa-square-whatsapp"></i>
+                    </a>
+                    <a href="#" class="hover:text-purple-400 text-2xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/aos/dist/aos.js"></script>
+    <script src="assets/fancyapps/ui/dist/fancybox/fancybox.umd.js"></script>
+    <script src="assets/jquery/dist/jquery.min.js"></script>
+    <script src="assets/costume-script.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#message-form').on('submit', function (event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/send_message',
+                    data: formData,
+                    success: function (response) {
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                        $('#message-form')[0].reset();
+                    },
+                    error: function (xhr) {
+                        if (xhr.status === 422) {
+                            let errors = xhr.responseJSON.errors;
+                            let errorMessage = '';
+                            for (let key in errors) {
+                                errorMessage += errors[key][0] + '\n';
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Validation Error',
+                                text: errorMessage,
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        let offset = {{ count($templates) }};
+
+        $('#load-more-templates').on('click', function () {
+            $.ajax({
+                url: '/load_more_templates',
+                type: 'GET',
+                data: {
+                    offset: offset
+                },
+                success: function (data) {
+                    if (data.length > 0) {
+                        data.forEach(item => {
+                            $('#templates').append(`
+                            <a href="${item.photo}" target="_blank" class="flex items-center justify-center group relative" data-fancybox="gallery">
+                                <div class="overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+                                    <img src="${item.photo}" alt="Gallery Image" class="w-52 h-52 object-cover" />
+                                </div>
+                            </a>
+                        `);
+                        });
+                        offset += data.length;
+                    } else {
+                        $('#load-more-templates').text('Tidak ada lagi templat yang tersedia').prop('disabled', true);
+                    }
+                },
+                error: function () {
+                    alert('Terjadi kesalahan saat memuat templat.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
