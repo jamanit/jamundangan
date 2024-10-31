@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2024 at 07:14 AM
+-- Generation Time: Oct 31, 2024 at 01:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,16 @@ CREATE TABLE `cache` (
   `value` mediumtext NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('admin|127.0.0.1', 'i:1;', 1730365975),
+('admin|127.0.0.1:timer', 'i:1730365975;', 1730365975),
+('adminadmin@gmail.com|127.0.0.1', 'i:1;', 1730365985),
+('adminadmin@gmail.com|127.0.0.1:timer', 'i:1730365985;', 1730365985);
 
 -- --------------------------------------------------------
 
@@ -149,8 +159,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('BrcTo0FcLbspZYMNUxYD8fcJlJxetPV6NAh02N1u', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiajA5T0FxYVZ1Zk5OZVZLTFE3NDkyOHFQd3I5dk1LVGtsU1RsckdsSCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvNzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTczMDM0MDkwNjt9fQ==', 1730353468),
-('dB8gzeND8re6rEVKjzKe5SP4H75SI06ms2ecHRNl', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibWIwQ042Vnp3UEkwUzNBMjZRNUc0d0VhS2dBVDBOcDQ5V2JBVGpFbSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbnZpdGF0aW9ucyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzUzOTkyO319', 1730355260);
+('8gWIcwteCXiAzZKI66SBWNH0BP9DE9PKpW8uEIVc', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVB0enpTTGJTdmhhczhUMUlOblFkOHVYS2ZVaDlIQndJMVpieEdyTiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvY29udGFjdF9mb3JtcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzc5MzkyO319', 1730379455),
+('lV8NkPUOm36W8ojlz3UgGlzvIOxQZ6cVYJXvjbJW', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia1R3V3VnMFQ1VHFac1JMWnJoVkZwcW1wam9KOThkbVNYMHBEM0s5VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbnZpdGF0aW9ucyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzY1OTMzO319', 1730378610),
+('YghkILdhLZkrGl9tu3GoGRM8LwOJvVAt5zdZcMBX', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRDk0ZllKYVZkRDg1VlVCcVJESDQ3Mk9URk9lQVFwWkNxVmd2elJSdyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MzAzNzg2Mzc7fX0=', 1730378649);
 
 -- --------------------------------------------------------
 
@@ -181,19 +192,22 @@ CREATE TABLE `tb_business_profiles` (
   `logo` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `year_since` varchar(255) NOT NULL,
+  `business_founding_date` date NOT NULL,
   `owner_name` varchar(255) NOT NULL,
   `about` text NOT NULL,
   `google_maps` text NOT NULL,
-  `brand_name` varchar(255) NOT NULL
+  `brand_name` varchar(255) NOT NULL,
+  `brand_founding_date` date NOT NULL,
+  `brand_email` varchar(255) NOT NULL,
+  `brand_website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_business_profiles`
 --
 
-INSERT INTO `tb_business_profiles` (`id`, `created_at`, `updated_at`, `uuid`, `logo`, `business_name`, `address`, `year_since`, `owner_name`, `about`, `google_maps`, `brand_name`) VALUES
-(1, '2024-10-18 16:19:50', '2024-10-30 03:08:58', 'uuid1234', 'image/38donqhZ4Uex7XPNz2lnWG1XIOdrAaTVYV7ZWlXL.png', 'JamUndangan', 'Simp. Rimbo Kota Jambi', '2024', 'Riki Davidtra', '<p><strong>JamUndangan</strong> adalah platform undangan digital yang didirikan oleh Jaman IT pada 23 Oktober 2024. Kami hadir untuk membawa inovasi dalam cara orang merayakan momen spesial mereka. Dengan latar belakang di bidang teknologi dan desain, kami memahami pentingnya memberikan pengalaman yang mulus dan menyenangkan bagi pengguna. Visi kami adalah untuk menciptakan solusi undangan yang praktis, estetis, dan ramah lingkungan. Kami percaya bahwa setiap momen berharga, baik itu pernikahan, ulang tahun, atau acara khusus lainnya, pantas dirayakan dengan cara yang unik dan berarti. Dengan berbagai fitur canggih yang kami tawarkan, termasuk desain kustom, interaktivitas, dan kemudahan pengiriman, kami berkomitmen untuk memberikan pengalaman yang tidak hanya modern tetapi juga sesuai dengan kebutuhan zaman. Kami di Jamundangan percaya bahwa teknologi dapat membantu menyatukan orang-orang, dan kami bersemangat untuk menjadi bagian dari perjalanan spesial Anda.</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7976.439948837537!2d103.5518596658181!3d-1.621851021281201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1730092779448!5m2!1sid!2sid\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'Jaman IT');
+INSERT INTO `tb_business_profiles` (`id`, `created_at`, `updated_at`, `uuid`, `logo`, `business_name`, `address`, `business_founding_date`, `owner_name`, `about`, `google_maps`, `brand_name`, `brand_founding_date`, `brand_email`, `brand_website`) VALUES
+(1, '2024-10-18 16:19:50', '2024-10-31 11:25:27', 'uuid1234', 'image/38donqhZ4Uex7XPNz2lnWG1XIOdrAaTVYV7ZWlXL.png', 'Jaman IT', 'Simp. Rimbo Kota Jambi', '2024-10-23', 'Riki Davidtra', '<p><strong>JamUndangan</strong> adalah platform undangan digital yang didirikan oleh Jaman IT pada 23 Oktober 2024. Kami hadir untuk membawa inovasi dalam cara orang merayakan momen spesial mereka. Dengan latar belakang di bidang teknologi dan desain, kami memahami pentingnya memberikan pengalaman yang mulus dan menyenangkan bagi pengguna. Visi kami adalah untuk menciptakan solusi undangan yang praktis, estetis, dan ramah lingkungan. Kami percaya bahwa setiap momen berharga, baik itu pernikahan, ulang tahun, atau acara khusus lainnya, pantas dirayakan dengan cara yang unik dan berarti. Dengan berbagai fitur canggih yang kami tawarkan, termasuk desain kustom, interaktivitas, dan kemudahan pengiriman, kami berkomitmen untuk memberikan pengalaman yang tidak hanya modern tetapi juga sesuai dengan kebutuhan zaman. Kami di Jamundangan percaya bahwa teknologi dapat membantu menyatukan orang-orang, dan kami bersemangat untuk menjadi bagian dari perjalanan spesial Anda.</p>', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7976.439948837537!2d103.5518596658181!3d-1.621851021281201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1730092779448!5m2!1sid!2sid\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'JamUndangan', '2024-10-23', 'undangan.jamanit@gmail.com', 'http://localhost:8000');
 
 -- --------------------------------------------------------
 
@@ -253,13 +267,6 @@ CREATE TABLE `tb_contact_forms` (
   `email` varchar(255) NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_contact_forms`
---
-
-INSERT INTO `tb_contact_forms` (`id`, `created_at`, `updated_at`, `uuid`, `name`, `email`, `message`) VALUES
-(13, '2024-10-31 05:50:56', '2024-10-31 05:50:56', '7509007d-b9cc-4446-b600-90a318b149b8', 'dsa', 'dsa@gmail.com', 'weqqeqwe');
 
 -- --------------------------------------------------------
 
@@ -418,27 +425,6 @@ CREATE TABLE `tb_invitations` (
   `user_id` int(11) NOT NULL,
   `invitation_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_invitation_types`
---
-
-CREATE TABLE `tb_invitation_types` (
-  `id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `uuid` char(36) NOT NULL,
-  `invitation_type_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_invitation_types`
---
-
-INSERT INTO `tb_invitation_types` (`id`, `created_at`, `updated_at`, `uuid`, `invitation_type_name`) VALUES
-(1, '2024-10-23 06:42:07', '2024-10-23 06:42:09', 'uuid123', 'UNDANGAN PERNIKAHAN');
 
 -- --------------------------------------------------------
 
@@ -762,7 +748,7 @@ CREATE TABLE `tb_templates` (
   `price` varchar(255) NOT NULL,
   `percent_discount` varchar(255) NOT NULL,
   `parameter` varchar(255) NOT NULL,
-  `invitation_type_id` int(11) NOT NULL,
+  `template_type_id` int(11) NOT NULL,
   `publication_status` varchar(255) NOT NULL,
   `total_amount` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -771,12 +757,33 @@ CREATE TABLE `tb_templates` (
 -- Dumping data for table `tb_templates`
 --
 
-INSERT INTO `tb_templates` (`id`, `created_at`, `updated_at`, `uuid`, `image`, `example_url`, `template_code`, `template_name`, `price`, `percent_discount`, `parameter`, `invitation_type_id`, `publication_status`, `total_amount`) VALUES
+INSERT INTO `tb_templates` (`id`, `created_at`, `updated_at`, `uuid`, `image`, `example_url`, `template_code`, `template_name`, `price`, `percent_discount`, `parameter`, `template_type_id`, `publication_status`, `total_amount`) VALUES
 (1, '2024-10-22 05:50:57', '2024-10-30 03:05:37', '9e487f36-b2cf-4d0e-9f6b-4affa8c1b8aa', 'template/soOMEP1ALjrRRcfHzyzyg36OUmfDenEKmTc3lrkF.jpg', '/invitation_templates/jm-calm/dist/calm_pink.html', 'calm_pink', 'Calm Pink', '100000', '50', 'calm_template', 1, 'Yes', '50000'),
 (2, '2024-10-22 05:52:54', '2024-10-30 03:05:25', '9ab0ea3f-b7ce-4800-91d3-3835b84eb2e6', 'template/ZCczungGOnyPV7fe1JkN329nhjDFJBymUnCcQT5O.jpg', '/invitation_templates/jm-calm/dist/calm_blue.html', 'calm_blue', 'Calm Blue', '100000', '50', 'calm_template', 1, 'Yes', '50000'),
 (3, '2024-10-22 05:53:36', '2024-10-30 03:05:11', 'e664fea4-15bf-45a7-b933-c93cffb8e5eb', 'template/DtCJOUO4wjVKED8JPA8lH7bFeFuYyjNjz0FWAQkK.jpg', '/invitation_templates/jm-calm/dist/calm_green.html', 'calm_green', 'Calm Green', '100000', '50', 'calm_template', 1, 'Yes', '50000'),
 (4, '2024-10-22 05:55:23', '2024-10-30 03:04:59', 'cc472470-632b-4dea-ada2-79b0b96ea05a', 'template/mReRbSX736zmz2qVVqxoHnDRGHzmhz5lPMdew2Vi.jpg', '/invitation_templates/jm-calm/dist/calm_red.html', 'calm_red', 'Calm Red', '100000', '50', 'calm_template', 1, 'Yes', '50000'),
 (5, '2024-10-22 05:56:26', '2024-10-30 03:04:40', 'e76f6fe5-6cb3-4f96-95b0-bfd5edf74f41', 'template/evvTrCdsrCF2Lnv1erizx75EKhwMo3IGP0EndF4o.jpg', '/invitation_templates/jm-sideright/dist/sideright_golden_brown.html', 'sideright_golden_brown', 'Sideright Golden Brown', '100000', '50', 'sideright_template', 1, 'Yes', '50000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_template_types`
+--
+
+CREATE TABLE `tb_template_types` (
+  `id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `uuid` char(36) NOT NULL,
+  `template_type_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_template_types`
+--
+
+INSERT INTO `tb_template_types` (`id`, `created_at`, `updated_at`, `uuid`, `template_type_name`) VALUES
+(1, '2024-10-23 06:42:07', '2024-10-23 06:42:09', 'uuid123', 'UNDANGAN PERNIKAHAN');
 
 -- --------------------------------------------------------
 
@@ -1005,13 +1012,6 @@ ALTER TABLE `tb_invitations`
   ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
 
 --
--- Indexes for table `tb_invitation_types`
---
-ALTER TABLE `tb_invitation_types`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
-
---
 -- Indexes for table `tb_love_stories`
 --
 ALTER TABLE `tb_love_stories`
@@ -1096,6 +1096,13 @@ ALTER TABLE `tb_streamings`
 -- Indexes for table `tb_templates`
 --
 ALTER TABLE `tb_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
+
+--
+-- Indexes for table `tb_template_types`
+--
+ALTER TABLE `tb_template_types`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
 
@@ -1219,13 +1226,7 @@ ALTER TABLE `tb_guests`
 -- AUTO_INCREMENT for table `tb_invitations`
 --
 ALTER TABLE `tb_invitations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
-
---
--- AUTO_INCREMENT for table `tb_invitation_types`
---
-ALTER TABLE `tb_invitation_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tb_love_stories`
@@ -1300,10 +1301,16 @@ ALTER TABLE `tb_templates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `tb_template_types`
+--
+ALTER TABLE `tb_template_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT for table `tb_transactions`
 --
 ALTER TABLE `tb_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tb_wedding_couples`
@@ -1315,7 +1322,7 @@ ALTER TABLE `tb_wedding_couples`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
