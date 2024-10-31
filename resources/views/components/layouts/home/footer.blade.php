@@ -4,7 +4,7 @@
     <div class="md:w-3/4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <p class="text-sm"> Copyright &copy; {{ config('app.brand', 'Brand') . ' ' . config('app.year_since', 'Year Since') }}. All rights reserved.</p>
+                <p class="text-sm"> Copyright &copy; {{ $business_profile->business_name . ' ' . date('Y', strtotime($business_profile->business_founding_date)) }}. All rights reserved.</p>
             </div>
             <div class="flex space-x-4">
                 @foreach ($contacts as $item)

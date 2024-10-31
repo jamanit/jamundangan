@@ -32,7 +32,7 @@
                                             <thead>
                                                 <tr class="text-nowrap">
                                                     <th>Image</th>
-                                                    <th>Invitation Type Name</th>
+                                                    <th>Template Type Name</th>
                                                     <th>Template Code</th>
                                                     <th>Parameter</th>
                                                     <th>Template Name</th>
@@ -82,8 +82,8 @@
                                     `;
                         }
                     }, {
-                        data: 'invitation_type_name',
-                        name: 'invitation_type_name',
+                        data: 'template_type_name',
+                        name: 'template_type_name',
                     }, {
                         data: 'template_code',
                         name: 'template_code',

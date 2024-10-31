@@ -36,24 +36,33 @@
                                                 <x-input type="text" name="owner_name" :value="$business_profile->owner_name" label="Owner Name" placeholder="Enter Owner Name" />
                                             </div>
                                             <div class="mb-3">
-                                                <x-input type="text" name="brand_name" :value="$business_profile->brand_name" label="Brand Name" placeholder="Enter Brand Name" />
-                                            </div>
-                                            <div class="mb-3">
                                                 <x-input type="text" name="business_name" :value="$business_profile->business_name" label="Business Name" placeholder="Enter Business Name" />
                                             </div>
                                             <div class="mb-3">
-                                                <x-input type="number" name="year_since" :value="$business_profile->year_since" label="Year Since" placeholder="Enter Year Since" />
+                                                <x-input type="date" name="business_founding_date" :value="$business_profile->business_founding_date" label="Business Founding Date" placeholder="Enter Business Founding Date" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <x-textarea name="address" :value="$business_profile->address" label="Address" placeholder="Enter Address" rows="2" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <x-textarea name="address" :value="$business_profile->address" label="Address" placeholder="Enter Address" rows="3" />
+                                                <x-input type="text" name="brand_name" :value="$business_profile->brand_name" label="Brand Name" placeholder="Enter Brand Name" />
                                             </div>
                                             <div class="mb-3">
-                                                <x-textarea name="google_maps" :value="$business_profile->google_maps" label="Google Maps" placeholder="Enter Google Maps" rows="5" />
-                                                <small class="text-info">Use the embed map feature from Google Maps.</small>
+                                                <x-input type="date" name="brand_founding_date" :value="$business_profile->brand_founding_date" label="Brand Founding Date" placeholder="Enter Brand Founding Date" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <x-input type="email" name="brand_email" :value="$business_profile->brand_email" label="Brand Email" placeholder="Enter Brand Email" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <x-input type="url" name="brand_website" :value="$business_profile->brand_website" label="Brand Website" placeholder="Enter Brand Website" />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <x-textarea name="google_maps" :value="$business_profile->google_maps" label="Google Maps" placeholder="Enter Google Maps" rows="5" />
+                                        <small class="text-info">Use the embed map feature from Google Maps.</small>
                                     </div>
                                     <div class="mb-3">
                                         <x-textarea type="text" name="about" :value="$business_profile->about" label="About" placeholder="Enter About" class="ckeditor1" rows="5" />

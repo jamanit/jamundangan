@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\paymentTransactionEmail;
+use App\Mail\statusInvitationEmail;
+
+use App\Models\M_business_profile;
 use App\Models\M_template;
 use App\Models\M_invitation;
 use App\Models\M_transaction;
@@ -43,14 +49,14 @@ class C_invitation extends Controller
             $templates = M_template::orderBy('id', 'desc')->skip($offset)->take(6)->get();
 
             foreach ($templates as $template) {
-                $template->id                   = $template->id;
-                $template->image                = Storage::url($template->image);
-                $template->template_name        = $template->template_name;
-                $template->invitation_type_name = $template->invitation_type->invitation_type_name;
-                $template->price                = number_format($template->price);
-                $template->percent_discount     = number_format($template->percent_discount);
-                $template->total_amount         = number_format($template->total_amount);
-                $template->example_url          = $template->example_url;
+                $template->id                 = $template->id;
+                $template->image              = Storage::url($template->image);
+                $template->template_name      = $template->template_name;
+                $template->template_type_name = $template->template_type->template_type_name;
+                $template->price              = number_format($template->price);
+                $template->percent_discount   = number_format($template->percent_discount);
+                $template->total_amount       = number_format($template->total_amount);
+                $template->example_url        = $template->example_url;
             }
 
             return response()->json($templates);
@@ -106,7 +112,7 @@ class C_invitation extends Controller
                 'payment_receipt' => 'required|image|mimes:jpeg,png,jpg,gif|max:5024',
             ]);
 
-            $transaction = M_transaction::where('uuid', $transaction_uuid)->firstOrFail();
+            $transaction = M_transaction::with('invitation.user', 'invitation.template.template_type')->where('uuid', $transaction_uuid)->firstOrFail();
 
             $data_transaction = $request->all();
             if ($request->hasFile('payment_receipt')) {
@@ -122,6 +128,13 @@ class C_invitation extends Controller
             $invitation                           = M_invitation::where('id', $transaction->invitation_id)->firstOrFail();
             $data_invitation['invitation_status'] = 'Ditinjau';
             $invitation->update($data_invitation);
+
+            // send email 
+            $transaction->refresh();
+            $user_email       = $transaction->invitation->user->email;
+            $business_profile = M_business_profile::select('brand_email')->where('id', 1)->first();
+            $invitation_status = 'Pembayaran diproses. Harap tunggu pembayaran Anda sedang ditinjau oleh admin.';
+            Mail::to([$user_email, $business_profile->brand_email])->send(new paymentTransactionEmail($transaction, $invitation_status));
 
             return redirect()->route('invitations.index')->with('success', 'Pembayaran diproses. Harap tunggu pembayaran Anda sedang ditinjau oleh admin.');
         } catch (ValidationException $e) {
@@ -169,7 +182,7 @@ class C_invitation extends Controller
     public function update_invitation_status(string $invitaion_id, string $status)
     {
         try {
-            $invitation = M_invitation::where('id', $invitaion_id)->firstOrFail();
+            $invitation = M_invitation::with('user', 'transaction', 'template.template_type')->where('id', $invitaion_id)->firstOrFail();
             if ($status == 'active') {
                 $data['invitation_status'] = 'Aktif';
             } elseif ($status == 'rejected') {
@@ -178,6 +191,23 @@ class C_invitation extends Controller
                 $data['invitation_status'] = 'Tidak Aktif';
             }
             $invitation->update($data);
+
+            // send email 
+            $invitation->refresh();
+            if ($invitation->invitation_status == 'Tertunda') {
+                $invitation_status = 'Silakan melakukan pembayaran dan mengirimkan bukti pembayaran.';
+            } elseif ($invitation->invitation_status == 'Ditinjau') {
+                $invitation_status = 'Pembayaran diproses. Harap tunggu karena pembayaran Anda sedang ditinjau oleh admin.';
+            } elseif ($invitation->invitation_status == 'Ditolak') {
+                $invitation_status = 'Pembayaran gagal. Silakan periksa kembali bukti pembayaran Anda.';
+            } elseif ($invitation->invitation_status == 'Aktif') {
+                $invitation_status = 'Pembayaran berhasil. Silakan lengkapi data undangan Anda.';
+            } elseif ($invitation->invitation_status == 'Tidak Aktif') {
+                $invitation_status = 'Undangan telah dinonaktifkan.';
+            }
+            $user_email       = $invitation->user->email;
+            $business_profile = M_business_profile::select('brand_email')->where('id', 1)->first();
+            Mail::to([$user_email, $business_profile->brand_email])->send(new statusInvitationEmail($invitation, $invitation_status));
 
             return redirect()->route('invitations.index')->with('success', 'Data berhasil diperbarui.');
         } catch (ValidationException $e) {
@@ -191,15 +221,15 @@ class C_invitation extends Controller
         $role_id = Auth::user()->role_id;
 
         if ($request->ajax()) {
-            $query = M_invitation::with('template.invitation_type', 'transaction')->select('*')->orderBy('id', 'desc');
+            $query = M_invitation::with('template.template_type', 'transaction')->select('*')->orderBy('id', 'desc');
             if ($role_id === 4) {
                 $query->where('user_id', $user_id);
             }
             $invitations = $query->get();
 
             return DataTables::of($invitations)
-                ->addColumn('invitation_type_name', function ($invitation) {
-                    return  $invitation->template->invitation_type->invitation_type_name ?? 'N/A';
+                ->addColumn('template_type_name', function ($invitation) {
+                    return  $invitation->template->template_type->template_type_name ?? 'N/A';
                 })
                 ->addColumn('template_name', function ($invitation) {
                     return  $invitation->template->template_name ?? 'N/A';

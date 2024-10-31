@@ -30,7 +30,7 @@
                                                 <x-input_file type="file" name="image" label="Image" :value="$template->image" />
                                             </div>
                                             <div class="mb-3">
-                                                <x-select name="invitation_type_id" label="Invitation Type" :options="$invitation_type_list" :selected="$template->invitation_type_id" />
+                                                <x-select name="template_type_id" label="Template Type" :options="$template_type_list" :selected="$template->template_type_id" />
                                             </div>
                                             <div class="mb-3">
                                                 <x-input type="text" name="template_code" label="Template Code" :value="$template->template_code" placeholder="Enter Template Code" />

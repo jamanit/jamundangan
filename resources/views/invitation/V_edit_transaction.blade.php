@@ -41,7 +41,7 @@
                                 @endif
 
                                 @if ($transaction->invitation->invitation_status == 'Tidak Aktif')
-                                    <x-alert :type="'secondary'" :message="'Undangan tidak aktif.'" />
+                                    <x-alert :type="'secondary'" :message="'Undangan telah dinonaktifkan.'" />
                                 @endif
 
                                 <div class="row">
@@ -50,10 +50,10 @@
                                             <x-input type="text" name="" label="Kode Transaksi" :value="$transaction->transaction_code" readonly />
                                         </div>
                                         <div class="mb-3">
-                                            <x-input type="text" name="" label="Tanggal Transaksi" :value="$transaction->created_at" readonly />
+                                            <x-input type="text" name="" label="Tanggal Transaksi" :value="$transaction->created_at->format('d-m-Y H:i:s')" readonly />
                                         </div>
                                         <div class="mb-3">
-                                            <x-input type="text" name="" label="Nama" :value="$transaction->invitation->user->nick_name" readonly />
+                                            <x-input type="text" name="" label="Nama" :value="$transaction->invitation->user->full_name" readonly />
                                         </div>
                                         <div class="mb-3">
                                             <x-input type="text" name="" label="Email" :value="$transaction->invitation->user->email" readonly />
@@ -74,7 +74,7 @@
                                                 <label for="discount_code">Diskon</label>
                                                 <div class="d-flex">
                                                     <input type="text" name="discount_code" id="discount_code" placeholder="Masukkan Kode Diskon" class="form-control  @error('discount_code') is-invalid @enderror">
-                                                    <input type="text" name="percent_discount" id="percent_discount" value="{{ $transaction->percent_discount }}%" class="form-control ml-1" style="width: 20%" readonly>
+                                                    <input type="text" name="percent_discount" id="percent_discount" value="{{ $transaction->percent_discount . '%' }}" class="form-control ml-1" style="width: 20%" readonly>
                                                     <button type="submit" class="btn btn-primary ml-1">Cek Kode</button>
                                                 </div>
                                                 @error('discount_code')

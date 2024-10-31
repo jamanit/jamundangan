@@ -40,11 +40,11 @@
                                 <div class="form-group">
                                     <div class="d-block">
                                         <label for="password" class="control-label">Password</label>
-                                        <div class="float-right">
-                                            <a href="{{ route('login') }}" class="text-small">
+                                        {{-- <div class="float-right">
+                                            <a href="#" class="text-small">
                                                 Forgot password?
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <div class="input-group mb-3">

@@ -32,14 +32,17 @@ class C_business_profile extends Controller
     {
         try {
             $request->validate([
-                'logo'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'owner_name'    => 'required|string|max:255',
-                'brand_name'    => 'required|string|max:255',
-                'business_name' => 'required|string|max:255',
-                'year_since'    => 'required|string|max:255',
-                'address'       => 'required|string|max:255',
-                'google_maps'   => 'required|string',
-                'about'         => 'required|string',
+                'logo'                   => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+                'owner_name'             => 'required|string|max:255',
+                'business_name'          => 'required|string|max:255',
+                'business_founding_date' => 'required|string',
+                'address'                => 'required|string|max:255',
+                'google_maps'            => 'required|string',
+                'about'                  => 'required|string',
+                'brand_name'             => 'required|string|max:255',
+                'brand_founding_date'    => 'required|string',
+                'brand_email'            => 'required|string|max:255',
+                'brand_website'          => 'required|string|max:255',
             ]);
 
             $data = $request->all();
@@ -48,7 +51,7 @@ class C_business_profile extends Controller
                     Storage::disk('public')->delete($business_profile->logo);
                 }
 
-                $filePath    = $request->file('logo')->store('image', 'public');
+                $filePath     = $request->file('logo')->store('image', 'public');
                 $data['logo'] = $filePath;
             }
             $business_profile->update($data);

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\GeneratesUuid;
 
-class M_invitation_type extends Model
+class M_template_type extends Model
 {
     use HasFactory, GeneratesUuid;
 
-    protected $table = 'tb_invitation_types';
+    protected $table = 'tb_template_types';
 
     protected $guarded = [];
 
@@ -18,6 +18,6 @@ class M_invitation_type extends Model
 
     public function templates()
     {
-        return $this->hasMany(M_template::class, 'invitation_type', 'id');
+        return $this->hasMany(M_template::class, 'template_type', 'id');
     }
 }

@@ -71,7 +71,7 @@
                         </div>
                         <div class="p-4">
                             <h3 class="text-base font-semibold">{{ $item->template_name }}</h3>
-                            <p class="text-xs text-gray-600">{{ $item->invitation_type->invitation_type_name }}</p>
+                            <p class="text-xs text-gray-600">{{ $item->template_type->template_type_name }}</p>
                             <div class="flex justify-between items-center mt-4 text-sm">
                                 @if ($item->percent_discount <= 0)
                                     <p class="text-green-500 font-semibold">Rp. {{ number_format($item->price) }}</p>
@@ -247,12 +247,12 @@
                                     </div>
                                     <div class="p-4">
                                         <h3 class="text-base font-semibold">${item.template_name}</h3>
-                                        <p class="text-xs text-gray-600">${item.invitation_type_name}</p>
+                                        <p class="text-xs text-gray-600">${item.template_type_name}</p>
                                         <div class="flex justify-between items-center mt-4 text-sm">
                                             ${item.percent_discount <= 0 ?
                                                 `<p class="text-green-500 font-semibold">Rp. ${item.price}</p>` :
                                                 `<p class="text-gray-600 line-through">Rp. ${item.price}</p> 
-                                                                         <p class="text-green-500 font-semibold">Rp. ${item.total_amount}</p>`
+                                                                             <p class="text-green-500 font-semibold">Rp. ${item.total_amount}</p>`
                                             }
                                         </div>
                                     </div>

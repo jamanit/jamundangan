@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $business_profile->business_name }} - @stack('title', 'Title')</title>
+    <title>{{ $business_profile->brand_name }} - @stack('title', 'Title')</title>
 
     <link rel="icon" href="{{ Storage::url($business_profile->logo) }}" type="image/x-icon">
 

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use App\Models\M_template;
-use App\Models\M_invitation_type;
+use App\Models\M_template_type;
 
 class C_template extends Controller
 {
@@ -26,11 +26,11 @@ class C_template extends Controller
         $role_id = Auth::user()->role_id;
 
         if ($request->ajax()) {
-            $templates = M_template::with('invitation_type')->orderBy('id', 'desc');
+            $templates = M_template::with('template_type')->orderBy('id', 'desc');
 
             return DataTables::of($templates)
-                ->addColumn('invitation_type_name', function ($template) {
-                    return $template->invitation_type->invitation_type_name ?? 'N/A';
+                ->addColumn('template_type_name', function ($template) {
+                    return $template->template_type->template_type_name ?? 'N/A';
                 })
                 ->make(true);
         } else {
@@ -45,10 +45,10 @@ class C_template extends Controller
         $user_id = Auth::user()->id;
         $role_id = Auth::user()->role_id;
 
-        $menus = $this->menuService->getMenus($role_id);
-        $invitation_type_list = M_invitation_type::orderBy('invitation_type_name', 'ASC')->get()
+        $menus              = $this->menuService->getMenus($role_id);
+        $template_type_list = M_template_type::orderBy('template_type_name', 'ASC')->get()
             ->mapWithKeys(function ($item) {
-                return [$item->id => $item->invitation_type_name];
+                return [$item->id => $item->template_type_name];
             })->toArray();
 
         $publication_status_list = [
@@ -56,7 +56,7 @@ class C_template extends Controller
             'No'  => 'No',
         ];
 
-        return view('template.V_create_template', compact('menus', 'invitation_type_list', 'publication_status_list'));
+        return view('template.V_create_template', compact('menus', 'template_type_list', 'publication_status_list'));
     }
 
     public function store(Request $request)
@@ -64,7 +64,7 @@ class C_template extends Controller
         try {
             $request->validate([
                 'image'              => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'invitation_type_id' => 'required|integer',
+                'template_type_id'   => 'required|integer',
                 'template_code'      => 'required|string|max:255',
                 'parameter'          => 'required|string|max:255',
                 'template_name'      => 'required|string|max:255',
@@ -93,10 +93,10 @@ class C_template extends Controller
         $user_id = Auth::user()->id;
         $role_id = Auth::user()->role_id;
 
-        $menus = $this->menuService->getMenus($role_id);
-        $invitation_type_list = M_invitation_type::orderBy('invitation_type_name', 'ASC')->get()
+        $menus              = $this->menuService->getMenus($role_id);
+        $template_type_list = M_template_type::orderBy('template_type_name', 'ASC')->get()
             ->mapWithKeys(function ($item) {
-                return [$item->id => $item->invitation_type_name];
+                return [$item->id => $item->template_type_name];
             })->toArray();
 
         $publication_status_list = [
@@ -104,7 +104,7 @@ class C_template extends Controller
             'No'  => 'No',
         ];
 
-        return view('template.V_edit_template', compact('menus', 'template', 'invitation_type_list', 'publication_status_list'));
+        return view('template.V_edit_template', compact('menus', 'template', 'template_type_list', 'publication_status_list'));
     }
 
     public function update(Request $request, M_template $template)
@@ -112,7 +112,7 @@ class C_template extends Controller
         try {
             $request->validate([
                 'image'              => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'invitation_type_id' => 'required|integer',
+                'template_type_id'   => 'required|integer',
                 'template_code'      => 'required|string|max:255',
                 'parameter'          => 'required|string|max:255',
                 'template_name'      => 'required|string|max:255',

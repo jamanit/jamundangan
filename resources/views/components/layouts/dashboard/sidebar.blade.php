@@ -5,7 +5,7 @@
         <div class="sidebar-brand text-left ml-3">
             <a href="{{ url('/') }}">
                 <img src="{{ Storage::url($business_profile->logo) }}" alt="logo" width="40" class="rounded">
-                {{ config('app.name', 'App Name') }}
+                {{ $business_profile->brand_name }}
             </a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">

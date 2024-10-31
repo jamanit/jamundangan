@@ -27,7 +27,7 @@
             </div>
             <div class="relative z-10 flex h-full flex-col items-start justify-end pb-12 pl-8 text-primary-golden-brown-400">
                 <div data-aos="fade-right">
-                    <p class="mb-4 text-lg sm:text-2xl lg:text-4xl">{{ $invitation->template->invitation_type->invitation_type_name ?? '' }}</p>
+                    <p class="mb-4 text-lg sm:text-2xl lg:text-4xl">{{ $invitation->template->template_type->template_type_name ?? '' }}</p>
                     <h2 class="mb-4 font-sacramento text-lg font-semibold sm:text-4xl lg:text-6xl">{{ $invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . ' & ' . $invitation->wedding_couple->groom_nickname : 'Wanite & Pria' }}</h2>
                     <p class="text-base sm:text-lg md:text-xl lg:text-2xl">Tanggal Acara: {{ $formatted_nearest_date }}</p>
                 </div>
@@ -52,7 +52,7 @@
 
                 <div class="relative z-10 flex h-full flex-col items-center justify-center text-center text-primary-golden-brown-400">
                     <div data-aos="fade-down">
-                        <p class="text-base">{{ $invitation->template->invitation_type->invitation_type_name ?? '' }}</p>
+                        <p class="text-base">{{ $invitation->template->template_type->template_type_name ?? '' }}</p>
                         <p class="mt-2 font-sacramento text-3xl font-semibold">{{ $invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . ' & ' . $invitation->wedding_couple->groom_nickname : 'Wanite & Pria' }}</p>
                     </div>
                     <div data-aos="fade-left">
@@ -443,7 +443,7 @@
                         @if ($business_profile)
                             <div class="text-center">
                                 <p class="text-sm">
-                                    Copyright &copy; {{ $business_profile->year_since }} <span class="font-semibold text-primary-golden-brown-400">{{ $business_profile->brand_name }}</span>. All rights reserved.
+                                    Copyright &copy; {{ date('Y', strtotime($business_profile->business_founding_date)) }} <span class="font-semibold text-primary-golden-brown-400">{{ $business_profile->business_name }}</span>. All rights reserved.
                                 </p>
                             </div>
                         @endif

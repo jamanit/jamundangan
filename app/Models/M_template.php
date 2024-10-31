@@ -37,8 +37,8 @@ class M_template extends Model
         return $this->hasMany(M_invitation::class, 'template_id', 'id');
     }
 
-    public function invitation_type()
+    public function template_type()
     {
-        return $this->belongsTo(M_invitation_type::class, 'invitation_type_id', 'id');
+        return $this->belongsTo(M_template_type::class, 'template_type_id', 'id');
     }
 }

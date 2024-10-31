@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $business_profile->business_name . ' - ' . ($invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . ' & ' . $invitation->wedding_couple->groom_nickname : 'Wanita & Pria') }}</title>
+    <title>{{ $business_profile->brand_name . ' - ' . ($invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . ' & ' . $invitation->wedding_couple->groom_nickname : 'Wanita & Pria') }}</title>
     <link rel="icon" href="{{ Storage::url($business_profile->logo) }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ Storage::url($business_profile->logo) }}" />
 

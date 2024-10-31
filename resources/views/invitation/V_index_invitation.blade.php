@@ -32,7 +32,7 @@
                                         <thead>
                                             <tr class="text-nowrap">
                                                 <th>Kode Undangan</th>
-                                                <th>Jenis Undangan</th>
+                                                <th>Jenis Templat</th>
                                                 <th>Nama Templat</th>
                                                 <th>Status Undangan</th>
                                                 <th>Dibuat Pada</th>
@@ -70,8 +70,8 @@
                         data: 'invitation_code',
                         name: 'invitation_code'
                     }, {
-                        data: 'invitation_type_name',
-                        name: 'invitation_type_name'
+                        data: 'template_type_name',
+                        name: 'template_type_name'
                     }, {
                         data: 'template_name',
                         name: 'template_name'

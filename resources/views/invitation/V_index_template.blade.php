@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="mt-2 mb-2">
                                         <h6 class="mb-0">{{ $item->template_name }}</h6>
-                                        <small>{{ $item->invitation_type->invitation_type_name }}</small>
+                                        <small>{{ $item->template_type->template_type_name }}</small>
                                     </div>
 
                                     @if ($item->percent_discount <= 0)
@@ -101,19 +101,19 @@
                                                             </div>
                                                             <div class="mt-2 mb-2">
                                                                 <h6 class="mb-0">${item.template_name}</h6>
-                                                                <small>${item.invitation_type_name}</small>
+                                                                <small>${item.template_type_name}</small>
                                                             </div>
 
                                                            ${item.percent_discount <= 0 ?
                                                                 `<h6 class="text-success">Rp. ${item.price}</h6>` :
                                                                 `<div class="row">
-                                                                        <div class="col-md-6 text-nowrap">
-                                                                            <h6><del>Rp. ${item.price}</del></h6>
-                                                                        </div>
-                                                                        <div class="col-md-6 text-nowrap">
-                                                                            <h6 class="text-success">Rp. ${item.total_amount}</h6>
-                                                                        </div>
-                                                                     </div>`
+                                                                            <div class="col-md-6 text-nowrap">
+                                                                                <h6><del>Rp. ${item.price}</del></h6>
+                                                                            </div>
+                                                                            <div class="col-md-6 text-nowrap">
+                                                                                <h6 class="text-success">Rp. ${item.total_amount}</h6>
+                                                                            </div>
+                                                                         </div>`
                                                             }
 
                                                         </div>

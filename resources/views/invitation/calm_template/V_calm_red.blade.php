@@ -90,7 +90,7 @@
 
             <div class="relative z-30 mx-4 my-4 flex h-screen flex-col items-center justify-center">
                 <div class="text-center" data-aos="fade-down">
-                    <p class="mb-4 text-base text-white">{{ $invitation->template->invitation_type->invitation_type_name ?? '' }}</p>
+                    <p class="mb-4 text-base text-white">{{ $invitation->template->template_type->template_type_name ?? '' }}</p>
                     <p class="mb-16 font-sacramento text-4xl font-semibold text-red-400">{{ $invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . ' & ' . $invitation->wedding_couple->groom_nickname : 'Wanite & Pria' }}</p>
                 </div>
 
@@ -491,7 +491,7 @@
                 @if ($business_profile)
                     <div class="text-center text-white" data-aos="zoom-in">
                         <p class="text-base">
-                            Copyright &copy; {{ $business_profile->year_since }} <span class="font-semibold text-red-400">{{ $business_profile->brand_name }}</span>. All rights reserved.
+                            Copyright &copy; {{ date('Y', strtotime($business_profile->business_founding_date)) }} <span class="font-semibold text-red-400">{{ $business_profile->business_name }}</span>. All rights reserved.
                         </p>
                     </div>
                 @endif

@@ -14,8 +14,6 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'brand' => env('APP_BRAND', 'Brand'),
-    'year_since' => env('APP_YEAR_SINCE', 'Year Since'),
 
     /*
     |--------------------------------------------------------------------------
