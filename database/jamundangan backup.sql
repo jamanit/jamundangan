@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2024 at 05:04 PM
+-- Generation Time: Oct 31, 2024 at 01:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -159,11 +159,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4kBUjBVdr7JyT8Kh5bR9VTFA15AZ9yfDzhi9IiGz', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUVNmNEZDYW8waUJKclRuM0VrVDludFFBeDhEQTdtZndhMnZoTjMwbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC84MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzgxMTMyO319', 1730381548),
-('5xpPaQwG1cUtnzqwIdV5lIFhXJy5bYkuhVaPPrmO', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGhlS3ZERTdWQUVvQWJDeGpXNHZXV3J0T1V6RGp2Ykx1d2xJWXhMYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1730390638),
 ('8gWIcwteCXiAzZKI66SBWNH0BP9DE9PKpW8uEIVc', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVB0enpTTGJTdmhhczhUMUlOblFkOHVYS2ZVaDlIQndJMVpieEdyTiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvY29udGFjdF9mb3JtcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzc5MzkyO319', 1730379455),
 ('lV8NkPUOm36W8ojlz3UgGlzvIOxQZ6cVYJXvjbJW', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia1R3V3VnMFQ1VHFac1JMWnJoVkZwcW1wam9KOThkbVNYMHBEM0s5VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbnZpdGF0aW9ucyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzY1OTMzO319', 1730378610),
-('vGD506VHtLSnW3CXm270EDOYrlcC06iHTvIm94Ob', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiSnVETWNnOFNpSDV4Mm0wMlZyZnFJNmJGWlhKS3A5NmdWNlJRSjgyMCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjg5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvaW52aXRhdGlvbnMvY2FsbV90ZW1wbGF0ZS9lZGl0Lzk0ZjkyNGExLWY5ZjQtNDhkNi04MDQxLWRjYjFlODVjYTQ3YiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzgxNTY0O319', 1730382320),
 ('YghkILdhLZkrGl9tu3GoGRM8LwOJvVAt5zdZcMBX', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRDk0ZllKYVZkRDg1VlVCcVJESDQ3Mk9URk9lQVFwWkNxVmd2elJSdyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MzAzNzg2Mzc7fX0=', 1730378649);
 
 -- --------------------------------------------------------
@@ -253,7 +250,7 @@ INSERT INTO `tb_contacts` (`id`, `created_at`, `updated_at`, `uuid`, `platform`,
 (1, '2024-10-19 09:26:03', '2024-10-25 06:50:08', '21af80bb-2e09-473c-ad00-7c57e4bae89d', 'Telephone', '+62 895-0847-5453', 'fas fa-phone', 'tel:+6289508475453'),
 (2, '2024-10-19 07:14:30', '2024-10-25 06:48:56', '40be40d2-8cfb-4bc4-8f12-43f86cfef3e8', 'Whatsapp', '+62 895-0847-5453', 'fab fa-whatsapp', 'https://wa.me/6289508475453'),
 (3, '2024-10-25 06:39:09', '2024-10-25 06:48:38', 'ba83117d-7d58-47f9-8152-5b4e10447612', 'Instagram', 'riki_davidtra', 'fab fa-instagram', 'https://www.instagram.com/riki_davidtra/'),
-(4, '2024-10-19 09:27:39', '2024-10-25 06:50:16', 'df2d9b90-87dd-4ddc-96b6-51a85b81622d', 'Email', 'undangan.jamanit@gmail.com', 'fa fa-envelope', 'mailto:undangan.jamanit@gmail.com');
+(4, '2024-10-19 09:27:39', '2024-10-25 06:50:16', 'df2d9b90-87dd-4ddc-96b6-51a85b81622d', 'Email', 'rikidavidtra.2310@gmail.com', 'fa fa-envelope', 'mailto:rikidavidtra.2310@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -428,13 +425,6 @@ CREATE TABLE `tb_invitations` (
   `user_id` int(11) NOT NULL,
   `invitation_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_invitations`
---
-
-INSERT INTO `tb_invitations` (`id`, `created_at`, `updated_at`, `uuid`, `template_id`, `invitation_code`, `user_id`, `invitation_status`) VALUES
-(83, '2024-10-31 13:25:45', '2024-10-31 13:25:45', '94f924a1-f9f4-48d6-8041-dcb1e85ca47b', 4, '20241031-2025-4273', 3, 'Tertunda');
 
 -- --------------------------------------------------------
 
@@ -814,13 +804,6 @@ CREATE TABLE `tb_transactions` (
   `price` varchar(255) DEFAULT NULL,
   `discount_code` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_transactions`
---
-
-INSERT INTO `tb_transactions` (`id`, `created_at`, `updated_at`, `uuid`, `transaction_code`, `invitation_id`, `total_amount`, `percent_discount`, `payment_receipt`, `price`, `discount_code`) VALUES
-(73, '2024-10-31 13:25:45', '2024-10-31 13:25:45', 'cce05df6-fa58-4898-a6b6-3781d16bb95a', '20241031-2025-4836', '83', '50000', '50', NULL, '100000', NULL);
 
 -- --------------------------------------------------------
 
@@ -1243,7 +1226,7 @@ ALTER TABLE `tb_guests`
 -- AUTO_INCREMENT for table `tb_invitations`
 --
 ALTER TABLE `tb_invitations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tb_love_stories`
@@ -1327,7 +1310,7 @@ ALTER TABLE `tb_template_types`
 -- AUTO_INCREMENT for table `tb_transactions`
 --
 ALTER TABLE `tb_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tb_wedding_couples`
