@@ -30,7 +30,7 @@
             <div class="flex-shrink-0 flex items-center">
                 <a href="#home" class="flex items-center gap-2">
                     <img src="{{ Storage::url($business_profile->logo) }}" alt="" class="w-10 rounded-lg">
-                    <div id="brand-name" class="text-lg text-gray-800 hover:text-purple-500 font-semibold">{{ $business_profile->business_name }}</div>
+                    <div id="brand-name" class="text-lg text-gray-800 hover:text-purple-500 font-semibold">{{ $business_profile->brand_name }}</div>
                 </a>
             </div>
             <button id="close-menu-button" class="text-gray-800 hover:text-purple-500 text-2xl">

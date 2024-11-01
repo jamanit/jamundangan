@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\EmailVerificationNotification;
 
 // Route::get('/', function () {
 //     return view('home'); 
@@ -30,67 +29,72 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('status', 'Verification link sent!');
 })->middleware(['auth'])->name('verification.send');
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware(['notUser'])->group(function () {
+        Route::resource('menus', App\Http\Controllers\C_menu::class);
+
+        Route::resource('menu_firsts', App\Http\Controllers\C_menu_first::class)->parameters([
+            'menu_firsts' => 'menu_first:uuid'
+        ]);
+
+        Route::resource('menu_seconds', App\Http\Controllers\C_menu_second::class)->parameters([
+            'menu_seconds' => 'menu_second:uuid'
+        ]);
+
+        Route::resource('roles', App\Http\Controllers\C_role::class)->parameters([
+            'roles' => 'role:uuid'
+        ]);
+
+        Route::resource('settings', App\Http\Controllers\C_setting::class)->parameters([
+            'settings' => 'setting:uuid'
+        ]);
+
+        Route::resource('menu_accesses', App\Http\Controllers\C_menu_access::class)->parameters([
+            'menu_accesses' => 'menu_access:uuid'
+        ]);
+
+        Route::resource('users', App\Http\Controllers\C_user::class)->parameters([
+            'users' => 'user:uuid'
+        ]);
+
+        Route::resource('business_profiles', App\Http\Controllers\C_business_profile::class)->parameters([
+            'business_profiles' => 'business_profile:uuid'
+        ]);
+
+        Route::resource('contact_forms', App\Http\Controllers\C_contact_form::class)->parameters([
+            'contact_forms' => 'contact_form:uuid'
+        ]);
+
+        Route::resource('services', App\Http\Controllers\C_service::class)->parameters([
+            'services' => 'service:uuid'
+        ]);
+
+        Route::resource('discounts', App\Http\Controllers\C_discount::class)->parameters([
+            'discounts' => 'discount:uuid'
+        ]);
+
+        Route::resource('templates', App\Http\Controllers\C_template::class)->parameters([
+            'templates' => 'template:uuid'
+        ]);
+
+        Route::resource('invitation_status', App\Http\Controllers\C_invitation_status::class)->parameters([
+            'invitation_status' => 'invitation_status:uuid'
+        ]);
+
+        Route::resource('payment_methods', App\Http\Controllers\C_payment_method::class)->parameters([
+            'payment_methods' => 'payment_method:uuid'
+        ]);
+    });
+
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-
-    Route::resource('menus', App\Http\Controllers\C_menu::class);
-
-    Route::resource('menu_firsts', App\Http\Controllers\C_menu_first::class)->parameters([
-        'menu_firsts' => 'menu_first:uuid'
-    ]);
-
-    Route::resource('menu_seconds', App\Http\Controllers\C_menu_second::class)->parameters([
-        'menu_seconds' => 'menu_second:uuid'
-    ]);
-
-    Route::resource('roles', App\Http\Controllers\C_role::class)->parameters([
-        'roles' => 'role:uuid'
-    ]);
-
-    Route::resource('settings', App\Http\Controllers\C_setting::class)->parameters([
-        'settings' => 'setting:uuid'
-    ]);
-
-    Route::resource('menu_accesses', App\Http\Controllers\C_menu_access::class)->parameters([
-        'menu_accesses' => 'menu_access:uuid'
-    ]);
-
-    Route::resource('users', App\Http\Controllers\C_user::class)->parameters([
-        'users' => 'user:uuid'
-    ]);
 
     Route::resource('profiles', App\Http\Controllers\C_profile::class)->parameters([
         'profiles' => 'profile:uuid'
     ]);
 
-    Route::resource('business_profiles', App\Http\Controllers\C_business_profile::class)->parameters([
-        'business_profiles' => 'business_profile:uuid'
-    ]);
-
     Route::get('contacts/show_contact_us', [App\Http\Controllers\C_contact::class, 'show_contact_us'])->name('contacts.show_contact_us');
     Route::resource('contacts', App\Http\Controllers\C_contact::class)->parameters([
         'contacts' => 'contact:uuid'
-    ]);
-
-    Route::resource('contact_forms', App\Http\Controllers\C_contact_form::class)->parameters([
-        'contact_forms' => 'contact_form:uuid'
-    ]);
-
-    Route::resource('services', App\Http\Controllers\C_service::class)->parameters([
-        'services' => 'service:uuid'
-    ]);
-
-    Route::resource('discounts', App\Http\Controllers\C_discount::class)->parameters([
-        'discounts' => 'discount:uuid'
-    ]);
-
-    Route::resource('templates', App\Http\Controllers\C_template::class)->parameters([
-        'templates' => 'template:uuid'
-    ]);
-
-    Route::resource('invitation_status', App\Http\Controllers\C_invitation_status::class)->parameters([
-        'invitation_status' => 'invitation_status:uuid'
     ]);
 
     Route::get('/invitations/load_more_template', [App\Http\Controllers\C_invitation::class, 'load_more_template'])->name('invitations.load_more_template');
@@ -102,10 +106,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/invitations/update_invitation_status/{invitaion_id}', [App\Http\Controllers\C_invitation::class, 'update_invitation_status'])->name('invitations.update_invitation_status');
     Route::resource('invitations', App\Http\Controllers\C_invitation::class)->parameters([
         'invitations' => 'invitation:uuid'
-    ]);
-
-    Route::resource('payment_methods', App\Http\Controllers\C_payment_method::class)->parameters([
-        'payment_methods' => 'payment_method:uuid'
     ]);
 });
 
