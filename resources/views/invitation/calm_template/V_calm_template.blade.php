@@ -610,6 +610,10 @@
         $show_invitation_url = $invitation->id . '/' . ($invitation->wedding_couple ? $invitation->wedding_couple->bride_nickname . '&' . $invitation->wedding_couple->groom_nickname : '');
     @endphp
 
+    <a href="#guest" class="btn btn-info" title="Kirim Undangan" style="position: fixed; bottom: 80px; right: 20px; z-index: 1001;">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+
     <a href="{{ url($show_invitation_url) }}" class="btn btn-info" title="Lihat Undangan" target="_blank" style="position: fixed; bottom: 30px; right: 20px; z-index: 1000;">
         <i class="fas fa-eye"></i>
     </a>
