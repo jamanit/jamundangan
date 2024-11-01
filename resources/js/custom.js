@@ -26,8 +26,14 @@ $(document).ready(function () {
 /* button loading */
 $(document).ready(function () {
     $('.btn-loading').on('click', function () {
-        var loadingText = $(this).data('loading-text');
+        $(this).prop('disabled', true);
+
+        var loadingText = $(this).data('loading-text') || 'Loading';
         $(this).html(loadingText);
+
+        setTimeout(() => {
+            $(this).closest('form').submit();
+        });
     });
 });
 /* end button loading */

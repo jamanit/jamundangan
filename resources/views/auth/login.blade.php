@@ -40,11 +40,11 @@
                                 <div class="form-group">
                                     <div class="d-block">
                                         <label for="password" class="control-label">Password</label>
-                                        {{-- <div class="float-right">
-                                            <a href="#" class="text-small">
+                                        <div class="float-right">
+                                            <a href="{{ route('password.request') }}" class="text-small">
                                                 Forgot password?
                                             </a>
-                                        </div> --}}
+                                        </div>
                                     </div>
 
                                     <div class="input-group mb-3">
@@ -64,7 +64,7 @@
 
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="remember-me">Remember me</label>
                                     </div>
                                 </div>

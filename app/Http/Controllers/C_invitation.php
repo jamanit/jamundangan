@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\paymentTransactionEmail;
@@ -18,6 +19,7 @@ use App\Models\M_business_profile;
 use App\Models\M_template;
 use App\Models\M_invitation;
 use App\Models\M_transaction;
+use App\Models\M_invitation_status;
 use App\Models\M_discount;
 use App\Models\M_payment_method;
 
@@ -67,28 +69,72 @@ class C_invitation extends Controller
 
     public function store_invitation(Request $request)
     {
+        $user_id = Auth::user()->id;
+
+        // Cek apakah ada undangan dengan status 2
+        $existingInvitations = M_invitation::where('user_id', $user_id)
+            ->where('invitation_status_id', 2)
+            ->get();
+
+        // Jika ada undangan dengan status 2, hentikan proses dan kirim pesan
+        if ($existingInvitations->isNotEmpty()) {
+            return redirect()->back()->with('error', 'Tidak dapat membuat undangan dikarenakan masih ada transaksi yang sedang ditinjau oleh admin.')->withInput();
+        }
+
+        DB::beginTransaction();
         try {
-            $user_id = Auth::user()->id;
+            // Hapus undangan dengan status 1 jika ada
+            $existingInvitations = M_invitation::where('user_id', $user_id)
+                ->where('invitation_status_id', 1)
+                ->get();
 
-            $data_invitation['template_id']       = $request->template_id;
-            $data_invitation['invitation_code']   = date('Ymd-Hi') . '-' . rand(000, 9999);
-            $data_invitation['user_id']           = $user_id;
-            $data_invitation['invitation_status'] = 'Tertunda';
-            $invitation                           = M_invitation::create($data_invitation);
+            if ($existingInvitations->isNotEmpty()) {
+                foreach ($existingInvitations as $invitation) {
+                    // Hapus transaksi terkait
+                    if ($invitation->transaction) {
+                        $invitation->transaction->delete();
+                    }
+                    // Hapus undangan
+                    $invitation->delete();
+                }
+            }
 
+            // Siapkan data undangan baru
+            $data_invitation = [
+                'template_id' => $request->template_id,
+                'invitation_code' => date('ymd-Hi') . '-' . rand(00, 99),
+                'user_id' => $user_id,
+                'expired_date' => Carbon::now()->addMonths(6),
+                'invitation_status_id' => 1,
+            ];
+
+            // Simpan undangan
+            $invitation = M_invitation::create($data_invitation);
+
+            // Ambil template untuk transaksi
             $template = M_template::findOrFail($invitation->template_id);
 
-            $data_transaction['invitation_id']    = $invitation->id;
-            $data_transaction['transaction_code'] = date('Ymd-Hi') . '-' . rand(000, 9999);
-            $data_transaction['price']            = $template->price;
-            $data_transaction['percent_discount'] = $template->percent_discount;
-            $data_transaction['total_amount']     = $template->price - ($template->price * ($template->percent_discount / 100));
+            $data_transaction = [
+                'invitation_id' => $invitation->id,
+                'transaction_code' => date('ymd-Hi') . '-' . rand(00, 99),
+                'price' => $template->price,
+                'percent_discount' => $template->percent_discount,
+                'total_amount' => $template->price - ($template->price * ($template->percent_discount / 100)),
+            ];
 
+            // Simpan transaksi
             $transaction = M_transaction::create($data_transaction);
+
+            // Komit transaksi jika semua langkah berhasil
+            DB::commit();
 
             return redirect()->route('invitations.edit_transaction', $transaction->uuid);
         } catch (ValidationException $e) {
+            DB::rollBack();
             return redirect()->back()->with('error', 'Gagal menambahkan data, harap periksa kembali.')->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Terjadi kesalahan, harap coba lagi.')->withInput();
         }
     }
 
@@ -99,20 +145,24 @@ class C_invitation extends Controller
 
         $menus = $this->menuService->getMenus($role_id);
 
-        $transaction     = M_transaction::with('invitation.user')->where('uuid', $transaction_uuid)->firstOrFail();
-        $payment_methods = M_payment_method::orderBy('id', 'desc')->get();
+        $transaction       = M_transaction::with('invitation.user', 'invitation.invitation_status')->where('uuid', $transaction_uuid)->firstOrFail();
+        $payment_methods   = M_payment_method::orderBy('id', 'desc')->get();
+        $invitation_status = M_invitation_status::whereNotIn('id', [1, 2])->orderBy('id', 'asc')->get();
 
-        return view('invitation.V_edit_transaction', compact('menus', 'transaction', 'payment_methods'));
+        return view('invitation.V_edit_transaction', compact('menus', 'transaction', 'payment_methods', 'invitation_status'));
     }
 
     public function update_transaction(Request $request, string $transaction_uuid)
     {
+        DB::beginTransaction();
         try {
             $request->validate([
                 'payment_receipt' => 'required|image|mimes:jpeg,png,jpg,gif|max:5024',
             ]);
 
-            $transaction = M_transaction::with('invitation.user', 'invitation.template.template_type')->where('uuid', $transaction_uuid)->firstOrFail();
+            $transaction = M_transaction::with('invitation.user', 'invitation.template.template_type', 'invitation.invitation_status')
+                ->where('uuid', $transaction_uuid)
+                ->firstOrFail();
 
             $data_transaction = $request->all();
             if ($request->hasFile('payment_receipt')) {
@@ -125,22 +175,29 @@ class C_invitation extends Controller
             }
             $transaction->update($data_transaction);
 
-            $invitation                           = M_invitation::where('id', $transaction->invitation_id)->firstOrFail();
-            $data_invitation['invitation_status'] = 'Ditinjau';
-            $invitation->update($data_invitation);
+            $invitation = M_invitation::with('invitation_status')->where('id', $transaction->invitation_id)->firstOrFail();
+            $invitation->update(['invitation_status_id' => 2]);
 
-            // send email 
+            // Prepare email details
             $transaction->refresh();
+            $invitation->refresh();
             $user_email       = $transaction->invitation->user->email;
             $business_profile = M_business_profile::select('brand_email')->where('id', 1)->first();
-            $invitation_status = 'Pembayaran diproses. Harap tunggu pembayaran Anda sedang ditinjau oleh admin.';
-            Mail::to([$user_email, $business_profile->brand_email])->send(new paymentTransactionEmail($transaction, $invitation_status));
 
+            // Send email
+            Mail::to([$user_email, $business_profile->brand_email])->send(new paymentTransactionEmail($transaction));
+
+            DB::commit();
             return redirect()->route('invitations.index')->with('success', 'Pembayaran diproses. Harap tunggu pembayaran Anda sedang ditinjau oleh admin.');
         } catch (ValidationException $e) {
+            DB::rollBack();
             return redirect()->back()->with('error', 'Data gagal diperbarui, harap periksa kembali.')->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Terjadi kesalahan, harap coba lagi.')->withInput();
         }
     }
+
 
     public function update_percent_discount(Request $request, string $transaction_uuid)
     {
@@ -179,41 +236,35 @@ class C_invitation extends Controller
         }
     }
 
-    public function update_invitation_status(string $invitaion_id, string $status)
+    public function update_invitation_status(Request $request, string $invitation_id)
     {
+        DB::beginTransaction(); // Memulai transaksi
         try {
-            $invitation = M_invitation::with('user', 'transaction', 'template.template_type')->where('id', $invitaion_id)->firstOrFail();
-            if ($status == 'active') {
-                $data['invitation_status'] = 'Aktif';
-            } elseif ($status == 'rejected') {
-                $data['invitation_status'] = 'Ditolak';
-            } else {
-                $data['invitation_status'] = 'Tidak Aktif';
-            }
+            $invitation = M_invitation::with('user', 'transaction', 'template.template_type', 'invitation_status')
+                ->where('id', $invitation_id)
+                ->firstOrFail();
+
+            // Update status undangan
+            $data['invitation_status_id'] = $request->invitation_status_id;
             $invitation->update($data);
 
-            // send email 
+            // Kirim email jika update berhasil
             $invitation->refresh();
-            if ($invitation->invitation_status == 'Tertunda') {
-                $invitation_status = 'Silakan melakukan pembayaran dan mengirimkan bukti pembayaran.';
-            } elseif ($invitation->invitation_status == 'Ditinjau') {
-                $invitation_status = 'Pembayaran diproses. Harap tunggu karena pembayaran Anda sedang ditinjau oleh admin.';
-            } elseif ($invitation->invitation_status == 'Ditolak') {
-                $invitation_status = 'Pembayaran gagal. Silakan periksa kembali bukti pembayaran Anda.';
-            } elseif ($invitation->invitation_status == 'Aktif') {
-                $invitation_status = 'Pembayaran berhasil. Silakan lengkapi data undangan Anda.';
-            } elseif ($invitation->invitation_status == 'Tidak Aktif') {
-                $invitation_status = 'Undangan telah dinonaktifkan.';
-            }
-            $user_email       = $invitation->user->email;
+            $user_email = $invitation->user->email;
             $business_profile = M_business_profile::select('brand_email')->where('id', 1)->first();
-            Mail::to([$user_email, $business_profile->brand_email])->send(new statusInvitationEmail($invitation, $invitation_status));
+            Mail::to([$user_email, $business_profile->brand_email])->send(new statusInvitationEmail($invitation));
 
+            DB::commit(); // Komit transaksi jika semua berhasil
             return redirect()->route('invitations.index')->with('success', 'Data berhasil diperbarui.');
         } catch (ValidationException $e) {
+            DB::rollBack(); // Rollback jika terjadi error pada validasi
             return redirect()->back()->with('error', 'Data gagal diperbarui, harap periksa kembali.')->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback untuk error lainnya
+            return redirect()->back()->with('error', 'Terjadi kesalahan, harap coba lagi.')->withInput();
         }
     }
+
 
     public function index(Request $request)
     {
@@ -221,7 +272,7 @@ class C_invitation extends Controller
         $role_id = Auth::user()->role_id;
 
         if ($request->ajax()) {
-            $query = M_invitation::with('template.template_type', 'transaction')->select('*')->orderBy('id', 'desc');
+            $query = M_invitation::with('template.template_type', 'transaction', 'invitation_status')->select('*')->orderBy('id', 'desc');
             if ($role_id === 4) {
                 $query->where('user_id', $user_id);
             }
@@ -234,11 +285,14 @@ class C_invitation extends Controller
                 ->addColumn('template_name', function ($invitation) {
                     return  $invitation->template->template_name ?? 'N/A';
                 })
-                ->addColumn('parameter', function ($invitation) {
-                    return  $invitation->template->parameter ?? 'N/A';
+                ->addColumn('invitation_status_name', function ($invitation) {
+                    return  $invitation->invitation_status->invitation_status_name ?? 'N/A';
                 })
                 ->addColumn('created_at', function ($invitation) {
                     return  date('d-m-Y H:i', strtotime($invitation->created_at)) ?? 'N/A';
+                })
+                ->addColumn('parameter', function ($invitation) {
+                    return  $invitation->template->parameter ?? 'N/A';
                 })
                 ->addColumn('transaction_uuid', function ($invitation) {
                     return  $invitation->transaction->uuid ?? 'N/A';

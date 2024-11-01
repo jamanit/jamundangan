@@ -16,6 +16,10 @@
                 </div>
             </div>
             <div class="section-body">
+                @if (session('success') || session('error'))
+                    <x-alert :type="session('success') ? 'success' : 'danger'" :message="session('success') ? session('success') : session('error')" />
+                @endif
+
                 <div class="row" id="template">
                     @foreach ($templates as $item)
                         <div class="col-6 col-sm-4 col-md-3 col-lg-3">
@@ -48,10 +52,10 @@
                                 </div>
                                 <div class="card-footer p-2 d-flex">
                                     <a href="{{ asset($item->example_url) }}" class="btn btn-sm btn-info" target="_blank">Lihat Contoh</a>
-                                    <form action="{{ route('invitations.store_invitation') }}" method="POST" class="ml-auto">
+                                    <form id="form_template_{{ $item->id }}" action="{{ route('invitations.store_invitation') }}" method="POST" class="ml-auto">
                                         @csrf
                                         <input type="hidden" name="template_id" id="template_id" value="{{ $item->id }}">
-                                        <button type="submit" class="btn btn-sm btn-primary">Pilih</button>
+                                        <button type="button" class="btn btn-sm btn-primary btn_select_template" data-template-id="{{ $item->id }}" data-toggle="modal" data-target="#templateConfirmModal">Pilih</button>
                                     </form>
                                 </div>
                             </div>
@@ -70,6 +74,26 @@
             </div>
         </section>
     </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="templateConfirmModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Template</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Jika sebelumnya telah membuat transaksi dan belum dibayarkan maka otomatis akan dihapus, pilih "Iya" untuk melanjutkan.</p>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-primary btn-loading btn_submit_template" data-loading-text="Memuat">Iya</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('styles')
@@ -77,8 +101,17 @@
 
 @push('scripts')
     <script>
-        let offset = {{ count($templates) }};
+        // submit form template
+        let selected_template_id;
+        $('.btn_select_template').on('click', function() {
+            selected_template_id = $(this).data('template-id');
+        });
+        $('.btn_submit_template').on('click', function() {
+            $('#form_template_' + selected_template_id).submit();
+        });
 
+        // load more template
+        let offset = {{ count($templates) }};
         $('#load-more-template').on('click', function() {
             $.ajax({
                 url: '/invitations/load_more_template',
@@ -107,13 +140,13 @@
                                                            ${item.percent_discount <= 0 ?
                                                                 `<h6 class="text-success">Rp. ${item.price}</h6>` :
                                                                 `<div class="row">
-                                                                            <div class="col-md-6 text-nowrap">
-                                                                                <h6><del>Rp. ${item.price}</del></h6>
-                                                                            </div>
-                                                                            <div class="col-md-6 text-nowrap">
-                                                                                <h6 class="text-success">Rp. ${item.total_amount}</h6>
-                                                                            </div>
-                                                                         </div>`
+                                                                                                                                                                                                                                <div class="col-md-6 text-nowrap">
+                                                                                                                                                                                                                                    <h6><del>Rp. ${item.price}</del></h6>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                <div class="col-md-6 text-nowrap">
+                                                                                                                                                                                                                                    <h6 class="text-success">Rp. ${item.total_amount}</h6>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                             </div>`
                                                             }
 
                                                         </div>

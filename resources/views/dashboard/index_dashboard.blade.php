@@ -15,6 +15,12 @@
                 </div>
             </div>
             <div class="section-body">
+                @if (session('verified'))
+                    <div class="alert alert-success" role="alert">
+                        {{ __('Your email has been successfully verified!') }}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <a href="{{ route('profiles.index') }}">

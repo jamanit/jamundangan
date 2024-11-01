@@ -14,15 +14,13 @@ class paymentTransactionEmail extends Mailable
     use Queueable, SerializesModels;
 
     protected $transaction;
-    protected $invitation_status;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($transaction, $invitation_status)
+    public function __construct($transaction)
     {
-        $this->transaction       = $transaction;
-        $this->invitation_status = $invitation_status;
+        $this->transaction = $transaction;
     }
 
     /**
@@ -43,8 +41,7 @@ class paymentTransactionEmail extends Mailable
         return new Content(
             view: 'email.V_payment_transaction_email',
             with: [
-                'transaction'       => $this->transaction,
-                'invitation_status' => $this->invitation_status,
+                'transaction' => $this->transaction,
             ],
         );
     }

@@ -98,6 +98,11 @@ class M_invitation extends Model
         return $this->hasOne(M_transaction::class, 'invitation_id', 'id');
     }
 
+    public function invitation_status()
+    {
+        return $this->belongsTo(M_invitation_status::class, 'invitation_status_id', 'id');
+    }
+
     public function cover()
     {
         return $this->hasOne(M_cover::class, 'invitation_id', 'id');

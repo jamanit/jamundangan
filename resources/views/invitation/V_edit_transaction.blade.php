@@ -24,44 +24,31 @@
 
                         <div class="card">
                             <div class="card-body">
-                                @if ($transaction->invitation->invitation_status == 'Tertunda')
-                                    <x-alert :type="'warning'" :message="'Silakan melakukan pembayaran dan mengirimkan bukti pembayaran.'" />
-                                @endif
-
-                                @if ($transaction->invitation->invitation_status == 'Ditinjau')
-                                    <x-alert :type="'primary'" :message="'Pembayaran diproses. Harap tunggu karena pembayaran Anda sedang ditinjau oleh admin.'" />
-                                @endif
-
-                                @if ($transaction->invitation->invitation_status == 'Ditolak')
-                                    <x-alert :type="'danger'" :message="'Pembayaran gagal. Silakan periksa kembali bukti pembayaran Anda.'" />
-                                @endif
-
-                                @if ($transaction->invitation->invitation_status == 'Aktif')
-                                    <x-alert :type="'success'" :message="'Pembayaran berhasil. Silakan lengkapi data undangan Anda.'" />
-                                @endif
-
-                                @if ($transaction->invitation->invitation_status == 'Tidak Aktif')
-                                    <x-alert :type="'secondary'" :message="'Undangan telah dinonaktifkan.'" />
+                                @if ($transaction->invitation->invitation_status)
+                                    <x-alert :type="'info'" :message="$transaction->invitation->invitation_status->description_status" />
                                 @endif
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <x-input type="text" name="" label="Kode Transaksi" :value="$transaction->transaction_code" readonly />
-                                        </div>
-                                        <div class="mb-3">
-                                            <x-input type="text" name="" label="Tanggal Transaksi" :value="$transaction->created_at->format('d-m-Y H:i:s')" readonly />
-                                        </div>
                                         <div class="mb-3">
                                             <x-input type="text" name="" label="Nama" :value="$transaction->invitation->user->full_name" readonly />
                                         </div>
                                         <div class="mb-3">
                                             <x-input type="text" name="" label="Email" :value="$transaction->invitation->user->email" readonly />
                                         </div>
+                                        <div class="mb-3">
+                                            <x-input type="text" name="" label="Kode Transaksi" :value="$transaction->transaction_code" readonly />
+                                        </div>
+                                        <div class="mb-3">
+                                            <x-input type="text" name="" label="Tanggal Transaksi" :value="$transaction->created_at" readonly />
+                                        </div>
+                                        <div class="mb-3">
+                                            <x-input type="text" name="" label="Kadaluarsa Udangan" :value="$transaction->invitation->expired_date" readonly />
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <x-input type="text" name="" label="Status Undangan" :value="$transaction->invitation->invitation_status" readonly />
+                                            <x-input type="text" name="" label="Status Undangan" :value="$transaction->invitation->invitation_status->invitation_status_name" readonly />
                                         </div>
                                         <div class="mb-3">
                                             <x-input type="text" name="" label="Harga" :value="'Rp. ' . number_format($transaction->price)" readonly />
@@ -105,7 +92,7 @@
                                             </div>
                                             <div class="col-md-6">
 
-                                                <form id="form-transaction" action="{{ route('invitations.update_transaction', $transaction->uuid) }}" method="POST" enctype="multipart/form-data">
+                                                <form id="form_transaction" action="{{ route('invitations.update_transaction', $transaction->uuid) }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="mb-3">
@@ -119,7 +106,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-whitesmoke d-flex">
-                                <button type="button" class="btn btn-primary btn-loading" id="btn-transaction" data-loading-text="Memuat">Kirim</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#transactionConfirmModal">Kirim</button>
                                 @if (Auth::user()->role->button_access == 1)
                                     <a href="#" class="btn btn-warning text-white ml-auto" data-toggle="modal" data-target="#paymentStatusModal">
                                         Ubah Status Undangan
@@ -132,6 +119,26 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="transactionConfirmModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Transaksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Templat tidak dapat lagi diubah, pilih "Iya" untuk melanjutkan.</p>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-primary btn-loading" id="btn_transaction" data-loading-text="Memuat">Iya</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="paymentStatusModal">
@@ -147,9 +154,22 @@
                     <p>Pilih status undangan di bawah.</p>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
-                    <a href="{{ url('invitations/update_invitation_status/' . $transaction->invitation_id . '/active') }}" class="btn btn-success btn-loading" data-loading-text="Memuat">Aktif</a>
-                    <a href="{{ url('invitations/update_invitation_status/' . $transaction->invitation_id . '/rejected') }}" class="btn btn-warning btn-loading" data-loading-text="Memuat">Ditolak</a>
-                    <a href="{{ url('invitations/update_invitation_status/' . $transaction->invitation_id . '/inactive') }}" class="btn btn-secondary btn-loading" data-loading-text="Memuat">Tidak Aktif</a>
+
+
+                    @php
+                        $btnClasses = ['3' => 'btn-success', '4' => 'btn-danger', '5' => 'btn-secondary'];
+                    @endphp
+                    @foreach ($invitation_status as $item)
+                        @php
+                            $btnClass = $btnClasses[$item->id] ?? 'btn-secondary';
+                        @endphp
+                        <form action="{{ url('invitations/update_invitation_status/' . $transaction->invitation_id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="invitation_status_id" id="invitation_status_id" value="{{ $item->id }}">
+                            <button type="submit" class="btn {{ $btnClass }} btn-loading" data-loading-text="Memuat">{{ $item->invitation_status_name }}</button>
+                        </form>
+                    @endforeach
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 </div>
             </div>
@@ -195,8 +215,8 @@
 
     <script>
         $(document).ready(function() {
-            $('#btn-transaction').on('click', function() {
-                $('#form-transaction').submit();
+            $('#btn_transaction').on('click', function() {
+                $('#form_transaction').submit();
             });
         });
     </script>

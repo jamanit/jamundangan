@@ -1,28 +1,48 @@
-@extends('layouts.app')
+@extends('layouts.app_auth')
+
+@push('title')
+    Verify Your Email Address
+@endpush
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                    <div class="card card-primary mt-5 radius-10" style="opacity: 0.8;">
+                        <div class="card-header">
+                            <a href="{{ url('/') }}">
+                                <img src="{{ Storage::url($business_profile->logo) }}" alt="logo" width="50" class="rounded">
+                            </a>
+                            <h3 class="ml-auto">{{ __('Verify Your Email Address') }}</h3>
                         </div>
-                    @endif
+                        <div class="card-body">
+                            @if (session('resent'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ __('A fresh verification link has been sent to your email address.') }}
+                                </div>
+                            @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+                            {{ __('Before proceeding, please check your email for a verification link.') }}
+                            {{ __('If you did not receive the email') }},
+                            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                            </form>
+                        </div>
+                        <div class="mb-4 text-muted text-center">
+                            {{ __('Already have an account?') }} <a href="{{ url('login') }}">{{ __('login') }}</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 @endsection
+
+@push('styles')
+@endpush
+
+@push('scripts')
+@endpush

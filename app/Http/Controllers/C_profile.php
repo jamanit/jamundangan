@@ -34,16 +34,9 @@ class C_profile extends Controller
             $request->validate([
                 'full_name'    => 'required|string|max:255',
                 'nick_name'     => 'required|string|max:255',
-                'email'        => 'required|email|unique:users,email,' . $profile->id,
-                'password'     => 'nullable|string|min:8|confirmed',
             ]);
 
             $data = $request->all();
-            if ($request->filled('password')) {
-                $data['password'] = bcrypt($data['password']);
-            } else {
-                unset($data['password']);
-            }
             $profile->update($data);
 
             return redirect()->route('profiles.index')->with('success', 'Data updated successfully.');

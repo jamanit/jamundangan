@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // calm template
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/invitations/calm_template/edit/{invitation_uuid}', [App\Http\Controllers\Template\C_calm_template::class, 'edit'])->name('invitations.calm_template.edit');
     Route::match(['post', 'put'], '/invitations/calm_template/action_wedding_couple/{uuid?}', [App\Http\Controllers\Template\C_calm_template::class, 'action_wedding_couple'])->name('invitations.calm_template.action_wedding_couple');
     Route::match(['post', 'put'], '/invitations/calm_template/action_quote/{uuid?}', [App\Http\Controllers\Template\C_calm_template::class, 'action_quote'])->name('invitations.calm_template.action_quote');
@@ -23,7 +23,7 @@ Route::get('/invitations/calm_template/get_message/{invitation_id}', [App\Http\C
 Route::match(['delete'], '/invitations/calm_template/action_message/{uuid?}', [App\Http\Controllers\Template\C_calm_template::class, 'action_message'])->name('invitations.calm_template.action_message');
 
 // sideright template
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/invitations/sideright_template/edit/{invitation_uuid}', [App\Http\Controllers\Template\C_sideright_template::class, 'edit'])->name('invitations.sideright_template.edit');
     Route::match(['post', 'put'], '/invitations/sideright_template/action_cover/{uuid?}', [App\Http\Controllers\Template\C_sideright_template::class, 'action_cover'])->name('invitations.sideright_template.action_cover');
     Route::match(['post', 'put'], '/invitations/sideright_template/action_wedding_couple/{uuid?}', [App\Http\Controllers\Template\C_sideright_template::class, 'action_wedding_couple'])->name('invitations.sideright_template.action_wedding_couple');

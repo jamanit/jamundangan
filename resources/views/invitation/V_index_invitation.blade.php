@@ -35,7 +35,7 @@
                                                 <th>Jenis Templat</th>
                                                 <th>Nama Templat</th>
                                                 <th>Status Undangan</th>
-                                                <th>Dibuat Pada</th>
+                                                <th>Kadaluarsa Undangan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -76,15 +76,15 @@
                         data: 'template_name',
                         name: 'template_name'
                     }, {
-                        data: 'invitation_status',
-                        name: 'invitation_status'
+                        data: 'invitation_status_name',
+                        name: 'invitation_status_name'
                     }, {
-                        data: 'created_at',
-                        name: 'created_at'
+                        data: 'expired_date',
+                        name: 'expired_date'
                     },
                     {
                         data: 'uuid',
-                        class: 'text-nowrap width-1 text-right',
+                        class: 'text-nowrap width-1',
                         "render": function(data, type, row) {
                             let paymentButton = '';
                             let editButton = '';
@@ -108,7 +108,7 @@
                                     </a>
                                 `;
                             } else {
-                                if (row.invitation_status === 'Tertunda' || row.invitation_status === 'Ditinjau' || row.invitation_status === 'Ditolak') {
+                                if (row.invitation_status_id === 1 || row.invitation_status_id === 2 || row.invitation_status_id === 4) {
                                     paymentButton = `
                                     <a href="/invitations/edit_transaction/${row.transaction_uuid}" class="btn btn-primary btn-sm">
                                         Pembayaran
@@ -116,7 +116,7 @@
                                 `;
                                 }
 
-                                if (row.invitation_status === 'Aktif') {
+                                if (row.invitation_status_id === 3) {
                                     editButton = `
                                     <a href="/invitations/${row.parameter}/edit/${data}" class="btn btn-warning btn-sm">
                                         Ubah Undangan

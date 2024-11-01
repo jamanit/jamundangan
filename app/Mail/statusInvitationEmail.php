@@ -14,15 +14,13 @@ class statusInvitationEmail extends Mailable
     use Queueable, SerializesModels;
 
     protected $invitation;
-    protected $invitation_status;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($invitation, $invitation_status)
+    public function __construct($invitation)
     {
-        $this->invitation        = $invitation;
-        $this->invitation_status = $invitation_status;
+        $this->invitation = $invitation;
     }
 
     /**
@@ -43,8 +41,7 @@ class statusInvitationEmail extends Mailable
         return new Content(
             view: 'email.V_status_invitation_email',
             with: [
-                'invitation'        => $this->invitation,
-                'invitation_status' => $this->invitation_status,
+                'invitation' => $this->invitation,
             ],
         );
     }

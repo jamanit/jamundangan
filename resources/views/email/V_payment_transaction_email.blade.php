@@ -60,13 +60,14 @@
 <body>
     <h3>FAKTUR PEMBAYARAN</h3>
 
-    <p><strong>Kode Transaksi:</strong> {{ $transaction->transaction_code }}</p>
-    <p><strong>Tanggal:</strong> {{ $transaction->created_at->format('d-m-Y H:i:s') }}</p>
     <p><strong>Nama Pelanggan:</strong> {{ $transaction->invitation->user->full_name }}</p>
     <p><strong>Email Pelanggan:</strong> {{ $transaction->invitation->user->email }}</p>
+    <p><strong>Kode Transaksi:</strong> {{ $transaction->transaction_code }}</p>
+    <p><strong>Tanggal Transaksi:</strong> {{ $transaction->created_at }}</p>
+    <p><strong>Kadaluarsa Undangan:</strong> {{ $transaction->invitation->expired_date }}</p>
     <p><strong>Jenis Undangan:</strong> {{ $transaction->invitation->template->template_type->template_type_name }}</p>
     <p><strong>Nama Templat:</strong> {{ $transaction->invitation->template->template_name }}</p>
-    <p><strong>Status Undangan:</strong> {{ $transaction->invitation->invitation_status }}</p>
+    <p><strong>Status Undangan:</strong> {{ $transaction->invitation->invitation_status->invitation_status_name }}</p>
 
     <table>
         <thead>
@@ -85,7 +86,7 @@
         </tbody>
     </table>
 
-    <p>Keterangan: {{ $invitation_status }}</p>
+    <p><strong>Keterangan:</strong> {{ $transaction->invitation->invitation_status->description_status }}</p>
 
     <footer>
         <p>{{ $business_profile->brand_name }}</strong></p>

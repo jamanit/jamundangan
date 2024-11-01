@@ -77,7 +77,7 @@
 
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="agree" id="agree" class="custom-control-input @error('agree') is-invalid @enderror" value="1" {{ old('agree') == '1' ? 'checked' : '' }}>
+                                        <input type="checkbox" name="agree" id="agree" class="custom-control-input @error('agree') is-invalid @enderror" value="1" {{ old('agree') == '1' ? 'checked' : '' }} required>
                                         <label class="custom-control-label" for="agree">I agree to the terms and conditions.</label>
                                     </div>
                                 </div>

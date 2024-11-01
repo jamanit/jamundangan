@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2024 at 05:04 PM
+-- Generation Time: Nov 01, 2024 at 10:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,10 +38,16 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('0ade7c2cf97f75d009975f4d720d1fa6c19f4897', 'i:1;', 1730452911),
+('0ade7c2cf97f75d009975f4d720d1fa6c19f4897:timer', 'i:1730452911;', 1730452911),
 ('admin|127.0.0.1', 'i:1;', 1730365975),
 ('admin|127.0.0.1:timer', 'i:1730365975;', 1730365975),
 ('adminadmin@gmail.com|127.0.0.1', 'i:1;', 1730365985),
-('adminadmin@gmail.com|127.0.0.1:timer', 'i:1730365985;', 1730365985);
+('adminadmin@gmail.com|127.0.0.1:timer', 'i:1730365985;', 1730365985),
+('da4b9237bacccdf19c0760cab7aec4a8359010b0', 'i:1;', 1730452597),
+('da4b9237bacccdf19c0760cab7aec4a8359010b0:timer', 'i:1730452597;', 1730452597),
+('fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f', 'i:1;', 1730452548),
+('fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f:timer', 'i:1730452548;', 1730452548);
 
 -- --------------------------------------------------------
 
@@ -159,12 +165,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4kBUjBVdr7JyT8Kh5bR9VTFA15AZ9yfDzhi9IiGz', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUVNmNEZDYW8waUJKclRuM0VrVDludFFBeDhEQTdtZndhMnZoTjMwbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC84MyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzgxMTMyO319', 1730381548),
-('5xpPaQwG1cUtnzqwIdV5lIFhXJy5bYkuhVaPPrmO', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGhlS3ZERTdWQUVvQWJDeGpXNHZXV3J0T1V6RGp2Ykx1d2xJWXhMYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1730390638),
-('8gWIcwteCXiAzZKI66SBWNH0BP9DE9PKpW8uEIVc', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVB0enpTTGJTdmhhczhUMUlOblFkOHVYS2ZVaDlIQndJMVpieEdyTiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvY29udGFjdF9mb3JtcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzc5MzkyO319', 1730379455),
-('lV8NkPUOm36W8ojlz3UgGlzvIOxQZ6cVYJXvjbJW', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia1R3V3VnMFQ1VHFac1JMWnJoVkZwcW1wam9KOThkbVNYMHBEM0s5VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9pbnZpdGF0aW9ucyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzY1OTMzO319', 1730378610),
-('vGD506VHtLSnW3CXm270EDOYrlcC06iHTvIm94Ob', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiSnVETWNnOFNpSDV4Mm0wMlZyZnFJNmJGWlhKS3A5NmdWNlJRSjgyMCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjg5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvaW52aXRhdGlvbnMvY2FsbV90ZW1wbGF0ZS9lZGl0Lzk0ZjkyNGExLWY5ZjQtNDhkNi04MDQxLWRjYjFlODVjYTQ3YiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzMwMzgxNTY0O319', 1730382320),
-('YghkILdhLZkrGl9tu3GoGRM8LwOJvVAt5zdZcMBX', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRDk0ZllKYVZkRDg1VlVCcVJESDQ3Mk9URk9lQVFwWkNxVmd2elJSdyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjQ6ImF1dGgiO2E6MTp7czoyMToicGFzc3dvcmRfY29uZmlybWVkX2F0IjtpOjE3MzAzNzg2Mzc7fX0=', 1730378649);
+('MoBetd3xcuCBnSAWBxINVPLycDglD0VFV3XDIkpM', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidnRpREpObkdUa0sycHBrVko0QktYck9tVHhJcjBrdXlSckRONEE2RCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo5O30=', 1730454718),
+('sIZgrbjOeerA5Pf6EgzPeJxF90hwcqvrV5DwbVyb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZmlOZ3FTZUxoWUdnUXljNDZ0aU9CY3NoVzc3S2VMN1VVSHlJaFNHVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fX0=', 1730454943);
 
 -- --------------------------------------------------------
 
@@ -426,15 +428,35 @@ CREATE TABLE `tb_invitations` (
   `template_id` int(11) NOT NULL,
   `invitation_code` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `invitation_status` varchar(255) NOT NULL
+  `invitation_status_id` int(11) NOT NULL,
+  `expired_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_invitation_status`
+--
+
+CREATE TABLE `tb_invitation_status` (
+  `id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `uuid` char(36) NOT NULL,
+  `invitation_status_name` varchar(255) NOT NULL,
+  `description_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_invitations`
+-- Dumping data for table `tb_invitation_status`
 --
 
-INSERT INTO `tb_invitations` (`id`, `created_at`, `updated_at`, `uuid`, `template_id`, `invitation_code`, `user_id`, `invitation_status`) VALUES
-(83, '2024-10-31 13:25:45', '2024-10-31 13:25:45', '94f924a1-f9f4-48d6-8041-dcb1e85ca47b', 4, '20241031-2025-4273', 3, 'Tertunda');
+INSERT INTO `tb_invitation_status` (`id`, `created_at`, `updated_at`, `uuid`, `invitation_status_name`, `description_status`) VALUES
+(1, '2024-11-01 05:16:55', '2024-11-01 05:43:32', 'uuid111', 'Tertunda', 'Silakan melakukan pembayaran dan mengirimkan bukti pembayaran.'),
+(2, '2024-11-01 05:16:55', '2024-11-01 05:16:57', 'uuid222', 'Ditinjau', 'Pembayaran diproses. Harap tunggu karena pembayaran Anda sedang ditinjau oleh admin.'),
+(3, '2024-11-01 05:16:55', '2024-11-01 05:16:57', 'uuid444', 'Aktif', 'Pembayaran berhasil. Silakan lengkapi data undangan Anda.'),
+(4, '2024-11-01 05:16:55', '2024-11-01 05:16:57', 'uuid333', 'Ditolak', 'Pembayaran gagal. Silakan periksa kembali bukti pembayaran Anda.'),
+(5, '2024-11-01 05:16:55', '2024-11-01 05:16:57', 'uuid555', 'Tidak Aktif', 'Undangan telah dinonaktifkan.');
 
 -- --------------------------------------------------------
 
@@ -477,49 +499,52 @@ INSERT INTO `tb_menu_accesses` (`id`, `created_at`, `updated_at`, `uuid`, `role_
 (411, '2024-10-29 09:21:37', '2024-10-29 09:21:37', 'aa7f723e-09fc-41de-85be-830b96af38c7', 4, 1, NULL),
 (412, '2024-10-29 09:21:37', '2024-10-29 09:21:37', 'cbf4061a-a2fb-448b-a019-02ac0af3f2d9', 4, 25, NULL),
 (413, '2024-10-29 09:21:37', '2024-10-29 09:21:37', 'd776874e-c1b5-4de0-97d2-b592874c4262', 4, 4, NULL),
-(414, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '8116b1e5-9613-4745-9edf-0f4f22c72418', 1, 2, 1),
-(415, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '0db21268-086f-4ec4-bbf6-e866fd3a1633', 1, 2, 2),
-(416, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '2c7e3ea9-4f7f-4298-a7a4-a707fde8426d', 1, 24, NULL),
-(417, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '68ab215c-1bac-48b9-a93d-18fccd8b5f01', 1, 7, NULL),
-(418, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '7bd64f47-7f50-4c7c-8d33-2ec12364ebde', 1, 1, NULL),
-(419, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '221d0908-f767-4766-b379-7265de501714', 1, 25, NULL),
-(420, '2024-10-29 09:21:48', '2024-10-29 09:21:48', 'd11b5fef-f962-4c08-911e-945019d2b0a5', 1, 3, 4),
-(421, '2024-10-29 09:21:48', '2024-10-29 09:21:48', 'bc3a22cf-8ddd-4175-962a-2a7d8d4e6a41', 1, 3, 20),
-(422, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '3995ae3f-afff-46b6-9431-0b78fe59b8d7', 1, 3, 24),
-(423, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '4675e7a4-6f14-4bf5-b236-536e5aad845f', 1, 3, 21),
-(424, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '1faecaae-8f16-4c6c-a7de-96c0fc42255a', 1, 3, 22),
-(425, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '1cf9176e-9d9a-4657-82f3-1949206ae684', 1, 3, 23),
-(426, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '0ba7ede4-79dc-48c7-b150-b47a0a6a468f', 1, 3, 7),
-(427, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '587bd2cc-59da-4c6e-bc0f-5adb694a190f', 1, 3, 3),
-(428, '2024-10-29 09:21:48', '2024-10-29 09:21:48', '7d8fbeec-94ff-4c7c-836e-405ec6e34544', 1, 4, NULL),
-(429, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '9e8ef5c5-9517-4475-98fa-af111a68bf35', 2, 2, 1),
-(430, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '772428bb-bb60-41d4-aeb0-0dde258bb587', 2, 2, 2),
-(431, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '0a5089a1-d78b-42db-a1d8-bb2a01021245', 2, 24, NULL),
-(432, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '0b1dd6b5-104a-4592-a984-90cfa3aed2b7', 2, 7, NULL),
-(433, '2024-10-29 09:22:02', '2024-10-29 09:22:02', 'ac2b692e-9647-465d-a898-07910a1b4733', 2, 1, NULL),
-(434, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '9d368a27-5aba-4242-b7b8-06671830660b', 2, 25, NULL),
-(435, '2024-10-29 09:22:02', '2024-10-29 09:22:02', 'bf6a0bdd-82ba-4158-8466-7767e00ce4b8', 2, 3, 4),
-(436, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '8436a741-8d77-42eb-a1fd-400ec902f0c8', 2, 3, 20),
-(437, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '93325be5-aa65-4079-a1d6-5c63ee0c9470', 2, 3, 24),
-(438, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '5dd72113-a068-4e5a-80ad-7fcd3e15374c', 2, 3, 21),
-(439, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '5d82327d-729d-41e4-a581-c883bb4f3b48', 2, 3, 22),
-(440, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '27658294-970c-4806-a2b7-f8ac8222f04c', 2, 3, 23),
-(441, '2024-10-29 09:22:02', '2024-10-29 09:22:02', '51b319e6-718d-45a4-9762-a34911ac8125', 2, 3, 7),
-(442, '2024-10-29 09:22:02', '2024-10-29 09:22:02', 'fa010f80-dca1-4a2e-9598-d336b918dc10', 2, 3, 3),
-(443, '2024-10-29 09:22:02', '2024-10-29 09:22:02', 'c061d8db-beb2-47d1-a6a0-986236945ea6', 2, 4, NULL),
-(444, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '90cc16d2-ec45-498b-9d07-c6aad5d3b246', 3, 24, NULL),
-(445, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '89fe7a17-c332-4116-81ec-60ee8576f2d8', 3, 7, NULL),
-(446, '2024-10-29 09:22:14', '2024-10-29 09:22:14', 'a7337b5b-0760-4378-ac3a-2a2f950d02de', 3, 1, NULL),
-(447, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '0ec54f19-8318-4709-bb4c-d26ebc8cc2ad', 3, 25, NULL),
-(448, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '950809da-19be-4ca9-9c13-ef0b995a4a68', 3, 3, 4),
-(449, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '0f849182-a400-4885-ac7f-02134e8c1a4e', 3, 3, 20),
-(450, '2024-10-29 09:22:14', '2024-10-29 09:22:14', 'f2e44172-63aa-48aa-88d1-594f068c5607', 3, 3, 24),
-(451, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '6d59c8db-d90f-4226-ae39-8fcbc69d4e4b', 3, 3, 21),
-(452, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '762906c4-3b45-413d-9160-177fbb48402a', 3, 3, 22),
-(453, '2024-10-29 09:22:14', '2024-10-29 09:22:14', '43f0ce16-5106-4bfb-9976-ac9ff73ab52c', 3, 3, 23),
-(454, '2024-10-29 09:22:14', '2024-10-29 09:22:14', 'ba046081-7fcd-4507-a9b6-8c8783fba857', 3, 3, 7),
-(455, '2024-10-29 09:22:14', '2024-10-29 09:22:14', 'a658ba9c-ed31-471d-9779-c85814e57386', 3, 3, 3),
-(456, '2024-10-29 09:22:14', '2024-10-29 09:22:14', 'af192ecd-3b22-4cdc-891d-4629e5c7621f', 3, 4, NULL);
+(457, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '3f5138f0-dc86-4c6b-a323-7699d22e8fb7', 1, 2, 1),
+(458, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'b52a2236-606b-43eb-b4ed-dbdc823bdd7a', 1, 2, 2),
+(459, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'ddac42fb-4f66-4baa-84ba-96754318c850', 1, 24, NULL),
+(460, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '5308223d-3a5d-433f-8012-d43b97763209', 1, 7, NULL),
+(461, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'cd8513b1-fa50-4191-b0cb-d44c6e9a70b6', 1, 1, NULL),
+(462, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'ca84e3bf-528a-4242-a3c1-a66fcbdbcd94', 1, 25, NULL),
+(463, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'e9b2c28b-588d-445e-8c5d-44a18a02d2d0', 1, 3, 4),
+(464, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'e10b5854-b4ab-4882-a8ca-1308a0eec114', 1, 3, 20),
+(465, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'a9bdc10e-0705-4c11-99aa-98d583bf5685', 1, 3, 24),
+(466, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'd1a3d1f6-a0b7-43a5-a657-cc5dca56645d', 1, 3, 25),
+(467, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'a506bd9f-a384-4afa-ba08-ffcf144f42dc', 1, 3, 21),
+(468, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '6e2cde43-c9e2-42eb-b848-b41b8c9aa4fe', 1, 3, 22),
+(469, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '248df489-8f7f-460b-9de5-9c62d46089e3', 1, 3, 23),
+(470, '2024-11-01 05:40:24', '2024-11-01 05:40:24', 'c7193181-1cc2-4689-8f07-4feea94d0f8b', 1, 3, 7),
+(471, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '28fd24dd-924b-4472-b5ae-738bd46ec4fa', 1, 3, 3),
+(472, '2024-11-01 05:40:24', '2024-11-01 05:40:24', '1a9bb3d4-b00b-4e11-8df6-a7c45dca58b4', 1, 4, NULL),
+(473, '2024-11-01 05:40:46', '2024-11-01 05:40:46', 'eca92476-e6a7-4604-aee9-a531f32770e3', 2, 2, 1),
+(474, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '5bb0ee02-f08d-40ad-8290-1c2778634262', 2, 2, 2),
+(475, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '8f22f87c-e652-4d09-a12e-41d50177d9a8', 2, 24, NULL),
+(476, '2024-11-01 05:40:46', '2024-11-01 05:40:46', 'ffcee8e2-41de-48ab-8560-121816053c17', 2, 7, NULL),
+(477, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '51a40226-2923-49ab-8422-b003bde047fb', 2, 1, NULL),
+(478, '2024-11-01 05:40:46', '2024-11-01 05:40:46', 'e6550901-2fae-4400-8fe4-5054ba293294', 2, 25, NULL),
+(479, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '5d937652-7cd5-4be6-bfb6-bd1a1a987e20', 2, 3, 4),
+(480, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '5974da1f-d1a7-48c1-ab06-9e997d1c520f', 2, 3, 20),
+(481, '2024-11-01 05:40:46', '2024-11-01 05:40:46', 'dac7d229-3e3e-4785-a5b8-f25f3bcaf79e', 2, 3, 24),
+(482, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '39247697-5c49-43fc-bf33-50e7c5ee0229', 2, 3, 25),
+(483, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '1f3bad45-7142-4022-936b-3313a0d60cfa', 2, 3, 21),
+(484, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '5708ae4e-0036-46f6-859c-03cc789d2234', 2, 3, 22),
+(485, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '4a1994cf-25a7-4284-8076-e1d0b85fd2e8', 2, 3, 23),
+(486, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '0dbab3a8-313e-4008-8863-ad73c57cc9a7', 2, 3, 7),
+(487, '2024-11-01 05:40:46', '2024-11-01 05:40:46', '9bbb01d1-2908-4bff-a0bc-9e0d091f6e18', 2, 3, 3),
+(488, '2024-11-01 05:40:46', '2024-11-01 05:40:46', 'd948cde7-81f8-4567-aa3e-839d3732fd4e', 2, 4, NULL),
+(489, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '14216f14-516f-49d3-bb27-e1554764f816', 3, 24, NULL),
+(490, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'c895d2b6-229a-48fd-886f-571a22fca254', 3, 7, NULL),
+(491, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'df51049a-57c4-4799-b5d6-ac4c4510d918', 3, 1, NULL),
+(492, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '575d7283-cb6f-4a37-8869-565cb00f9987', 3, 25, NULL),
+(493, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'f8bd0f3d-d229-4ce9-9bd8-6138ab534c3a', 3, 3, 4),
+(494, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '8444b5d9-e167-42e8-9b97-791bfa25b466', 3, 3, 20),
+(495, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'c768f917-0f97-4324-9ee9-d5228f6d7637', 3, 3, 24),
+(496, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '58b87fcd-94d7-41da-9a43-c93aaa00024d', 3, 3, 25),
+(497, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '29f727cb-3cf0-4d51-b1ca-044e321eb4d8', 3, 3, 21),
+(498, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '84b18a1f-9733-4c7a-af2b-1f077051eb7d', 3, 3, 22),
+(499, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '8c0d9426-53f0-4268-8e47-7f1454f0f8a1', 3, 3, 23),
+(500, '2024-11-01 05:40:56', '2024-11-01 05:40:56', '6cc00e96-803c-4c7b-bb09-a31b536d9238', 3, 3, 7),
+(501, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'ecb945da-f5ae-44fa-b196-1c7727c40462', 3, 3, 3),
+(502, '2024-11-01 05:40:56', '2024-11-01 05:40:56', 'a9b81e57-6809-426e-b3ec-86c9f021f192', 3, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -581,7 +606,8 @@ INSERT INTO `tb_menu_seconds` (`id`, `created_at`, `updated_at`, `uuid`, `second
 (21, '2024-10-23 05:09:53', '2024-10-23 05:09:53', 'b26095c0-46c2-461c-b6c6-45a5c1fd4ae4', 'Payment Method', 'payment_methods', NULL, 3),
 (22, '2024-10-28 04:50:42', '2024-10-28 04:50:42', '3dbd96be-64bd-41aa-9756-b7525e2bef30', 'Service', 'services', NULL, 3),
 (23, '2024-10-28 05:24:38', '2024-10-28 05:24:59', '0895a591-cebf-41f5-bfdb-d6816a9dd9a4', 'Setting', 'settings/uuid1234/edit', NULL, 3),
-(24, '2024-10-28 05:38:07', '2024-10-28 05:38:07', 'e92002e6-60bd-46e8-b52c-dae9219c2a25', 'Discount', 'discounts', NULL, 3);
+(24, '2024-10-28 05:38:07', '2024-10-28 05:38:07', 'e92002e6-60bd-46e8-b52c-dae9219c2a25', 'Discount', 'discounts', NULL, 3),
+(25, '2024-11-01 05:39:44', '2024-11-01 05:39:44', 'ab0b59c6-79e5-4141-b263-f9f7a3eb5153', 'Invitation Status', 'invitation_status', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -815,13 +841,6 @@ CREATE TABLE `tb_transactions` (
   `discount_code` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tb_transactions`
---
-
-INSERT INTO `tb_transactions` (`id`, `created_at`, `updated_at`, `uuid`, `transaction_code`, `invitation_id`, `total_amount`, `percent_discount`, `payment_receipt`, `price`, `discount_code`) VALUES
-(73, '2024-10-31 13:25:45', '2024-10-31 13:25:45', 'cce05df6-fa58-4898-a6b6-3781d16bb95a', '20241031-2025-4836', '83', '50000', '50', NULL, '100000', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -876,10 +895,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `uuid`, `full_name`, `nick_name`, `role_id`) VALUES
-(1, NULL, 'owner@gmail.com', NULL, '$2y$12$k83DHsQnWCT3Guu8aDaV9uDCYhQ0Pt2P/jXGB/SvqpW4cQ5dysHUq', NULL, '2024-09-22 04:51:41', '2024-10-30 02:44:20', 'b78bbf63-2424-4aec-9da7-55537062f5e3', 'Riki David', 'Riki', 2),
-(2, NULL, 'it@gmail.com', NULL, '$2y$12$jI2jrqRHuW.Lj5FqgK75U.Fy8dQ/BUhdzagdm93r4Y32DuqyQz6Vu', NULL, '2024-09-22 05:10:02', '2024-10-30 02:44:01', '3a0f5a4a-14ed-426b-9298-3cfa6f475c61', 'Riki David', 'Riki', 1),
-(3, NULL, 'admin@gmail.com', NULL, '$2y$12$Hj.o3dni.mofGL3kc5gCZOEyjqlY5.CsL0GXQLxR9Cp5gOWeG.VN6', NULL, '2024-10-23 03:28:12', '2024-10-30 02:43:51', '96b87508-e1d9-4630-8349-db88909a8de7', 'Riki David', 'Riki', 3),
-(4, NULL, 'user@gmail.com', NULL, '$2y$12$v.ylbvOGE9ydoqJiTk.iAubF97U.UQG3hPxmhS1Gs6VLJtD0J.yeq', NULL, '2024-10-29 09:18:58', '2024-10-30 02:43:25', '9113733a-efb6-4912-a04f-f63db698076c', 'Riki David', 'Riki', 4);
+(1, NULL, 'rikidavidtra.2310@gmail.com', '2024-11-01 09:15:11', '$2y$12$k83DHsQnWCT3Guu8aDaV9uDCYhQ0Pt2P/jXGB/SvqpW4cQ5dysHUq', NULL, '2024-09-22 04:51:41', '2024-10-30 02:44:20', 'b78bbf63-2424-4aec-9da7-55537062f5e3', 'Riki David', 'Riki', 1),
+(2, NULL, 'it@gmail.com', '2024-11-01 09:15:11', '$2y$12$jI2jrqRHuW.Lj5FqgK75U.Fy8dQ/BUhdzagdm93r4Y32DuqyQz6Vu', NULL, '2024-09-22 05:10:02', '2024-10-30 02:44:01', '3a0f5a4a-14ed-426b-9298-3cfa6f475c61', 'Riki David', 'Riki', 2),
+(3, NULL, 'admin@gmail.com', '2024-11-01 09:15:11', '$2y$12$Hj.o3dni.mofGL3kc5gCZOEyjqlY5.CsL0GXQLxR9Cp5gOWeG.VN6', NULL, '2024-10-23 03:28:12', '2024-10-30 02:43:51', '96b87508-e1d9-4630-8349-db88909a8de7', 'Riki David', 'Riki', 3),
+(4, NULL, 'user@gmail.com', '2024-11-01 09:15:11', '$2y$12$v.ylbvOGE9ydoqJiTk.iAubF97U.UQG3hPxmhS1Gs6VLJtD0J.yeq', NULL, '2024-10-29 09:18:58', '2024-10-30 02:43:25', '9113733a-efb6-4912-a04f-f63db698076c', 'Riki David', 'Riki', 4);
 
 --
 -- Indexes for dumped tables
@@ -1025,6 +1044,13 @@ ALTER TABLE `tb_guests`
 -- Indexes for table `tb_invitations`
 --
 ALTER TABLE `tb_invitations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
+
+--
+-- Indexes for table `tb_invitation_status`
+--
+ALTER TABLE `tb_invitation_status`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uuid` (`uuid`) USING BTREE;
 
@@ -1183,7 +1209,7 @@ ALTER TABLE `tb_business_profiles`
 -- AUTO_INCREMENT for table `tb_closings`
 --
 ALTER TABLE `tb_closings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tb_contacts`
@@ -1243,7 +1269,13 @@ ALTER TABLE `tb_guests`
 -- AUTO_INCREMENT for table `tb_invitations`
 --
 ALTER TABLE `tb_invitations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `tb_invitation_status`
+--
+ALTER TABLE `tb_invitation_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_love_stories`
@@ -1255,7 +1287,7 @@ ALTER TABLE `tb_love_stories`
 -- AUTO_INCREMENT for table `tb_menu_accesses`
 --
 ALTER TABLE `tb_menu_accesses`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=457;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=503;
 
 --
 -- AUTO_INCREMENT for table `tb_menu_firsts`
@@ -1267,7 +1299,7 @@ ALTER TABLE `tb_menu_firsts`
 -- AUTO_INCREMENT for table `tb_menu_seconds`
 --
 ALTER TABLE `tb_menu_seconds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tb_messages`
@@ -1327,7 +1359,7 @@ ALTER TABLE `tb_template_types`
 -- AUTO_INCREMENT for table `tb_transactions`
 --
 ALTER TABLE `tb_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `tb_wedding_couples`
@@ -1339,7 +1371,7 @@ ALTER TABLE `tb_wedding_couples`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

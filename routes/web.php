@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationNotification;
 
 // Route::get('/', function () {
 //     return view('home'); 
@@ -10,9 +12,26 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::post('/send_contact_form', [App\Http\Controllers\HomeController::class, 'send_contact_form'])->name('home.send_contact_form');
 Route::get('/load_more_template', [App\Http\Controllers\HomeController::class, 'load_more_template'])->name('home.load_more_template');
 
-Auth::routes();
+Auth::routes(['verify' => true, 'reset' => true]);
 
-Route::middleware(['auth'])->group(function () {
+Route::get('/email/verify', function () {
+    return view('auth.verify'); // Ganti dengan view yang sesuai
+})->middleware(['auth'])->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (Request $request) {
+    $request->user()->markEmailAsVerified();
+
+    return redirect('/dashboard')->with('verified', true);
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('status', 'Verification link sent!');
+})->middleware(['auth'])->name('verification.send');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('menus', App\Http\Controllers\C_menu::class);
@@ -70,13 +89,17 @@ Route::middleware(['auth'])->group(function () {
         'templates' => 'template:uuid'
     ]);
 
+    Route::resource('invitation_status', App\Http\Controllers\C_invitation_status::class)->parameters([
+        'invitation_status' => 'invitation_status:uuid'
+    ]);
+
     Route::get('/invitations/load_more_template', [App\Http\Controllers\C_invitation::class, 'load_more_template'])->name('invitations.load_more_template');
     Route::get('/invitations/template', [App\Http\Controllers\C_invitation::class, 'template'])->name('invitations.template');
     Route::post('/invitations/store_invitation', [App\Http\Controllers\C_invitation::class, 'store_invitation'])->name('invitations.store_invitation');
     Route::get('/invitations/edit_transaction/{transaction_uuid}', [App\Http\Controllers\C_invitation::class, 'edit_transaction'])->name('invitations.edit_transaction');
     Route::put('/invitations/update_transaction/{transaction_uuid}', [App\Http\Controllers\C_invitation::class, 'update_transaction'])->name('invitations.update_transaction');
     Route::put('/invitations/update_percent_discount/{transaction_uuid}', [App\Http\Controllers\C_invitation::class, 'update_percent_discount'])->name('invitations.update_percent_discount');
-    Route::get('/invitations/update_invitation_status/{invitaion_id}/{status}', [App\Http\Controllers\C_invitation::class, 'update_invitation_status'])->name('invitations.update_invitation_status');
+    Route::put('/invitations/update_invitation_status/{invitaion_id}', [App\Http\Controllers\C_invitation::class, 'update_invitation_status'])->name('invitations.update_invitation_status');
     Route::resource('invitations', App\Http\Controllers\C_invitation::class)->parameters([
         'invitations' => 'invitation:uuid'
     ]);

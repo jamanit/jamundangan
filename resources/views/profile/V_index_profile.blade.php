@@ -30,21 +30,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
+                                                <x-input type="email" name="" label="Email" :value="$profile->email" placeholder="Enter Email" readonly />
+                                            </div>
+                                            <div class="mb-3">
                                                 <x-input type="text" name="full_name" label="Full Name" :value="$profile->full_name" placeholder="Enter Full Name" />
                                             </div>
                                             <div class="mb-3">
                                                 <x-input type="text" name="nick_name" label="Nickname" :value="$profile->nick_name" placeholder="Enter Nickname" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <x-input type="email" name="email" label="Email" :value="$profile->email" placeholder="Enter Email" readonly />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <x-input type="password" name="password" label="Password" placeholder="Enter Password" class="pwstrength" data-indicator="pwindicator" autocomplete="new-password" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <x-input type="password" name="password_confirmation" label="Confirm Password" placeholder="Confirm Password" autocomplete="new-password" />
                                             </div>
                                         </div>
                                     </div>

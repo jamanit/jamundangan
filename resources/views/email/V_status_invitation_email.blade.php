@@ -60,15 +60,16 @@
 <body>
     <h3>STATUS UNDANGAN</h3>
 
-    <p><strong>Kode Transaksi:</strong> {{ $invitation->transaction->transaction_code }}</p>
-    <p><strong>Tanggal:</strong> {{ $invitation->transaction->created_at->format('d-m-Y H:i:s') }}</p>
     <p><strong>Nama Pelanggan:</strong> {{ $invitation->user->full_name }}</p>
     <p><strong>Email Pelanggan:</strong> {{ $invitation->user->email }}</p>
+    <p><strong>Kode Transaksi:</strong> {{ $invitation->transaction->transaction_code }}</p>
+    <p><strong>Tanggal Transaksi:</strong> {{ $invitation->transaction->created_at }}</p>
+    <p><strong>Kadaluarsa Undangan:</strong> {{ $invitation->expired_date }}</p>
     <p><strong>Jenis Undangan:</strong> {{ $invitation->template->template_type->template_type_name }}</p>
     <p><strong>Nama Templat:</strong> {{ $invitation->template->template_name }}</p>
-    <p><strong>Status Undangan:</strong> {{ $invitation->invitation_status }}</p>
+    <p><strong>Status Undangan:</strong> {{ $invitation->invitation_status->invitation_status_name }}</p>
 
-    <p>Keterangan: {{ $invitation_status }} <a href="{{ $business_profile->brand_website }}">kujungi website</a></p>
+    <p><strong>Keterangan:</strong> {{ $invitation->invitation_status->description_status }} <a href="{{ $business_profile->brand_website }}">kunjungi website</a></p>
 
     <footer>
         <p>{{ $business_profile->brand_name }}</strong></p>
