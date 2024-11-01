@@ -30,11 +30,7 @@
                                 <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                             </form>
                         </div>
-                        <div class="mb-4 text-muted text-center">
-                            {{ __('Already have an account?') }} <a href="{{ url('login') }}">{{ __('login') }}</a>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
