@@ -36,6 +36,14 @@
     @yield('content')
     <x-layouts.home.footer :contacts="$contacts" />
 
+    <!-- Tombol Scroll Up Down-->
+    <button id="scrollUp" class="scroll-button fixed bottom-32 right-4 bg-purple-600 text-white rounded-full p-3 shadow-lg hidden opacity-75 hover:opacity-100 transition-opacity duration-200">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button id="scrollDown" class="scroll-button fixed bottom-20 right-4 bg-purple-600 text-white rounded-full p-3 shadow-lg hidden opacity-75 hover:opacity-100 transition-opacity duration-200">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+
     <script src="{{ asset('/') }}assets/jm-homepage2/dist/assets/aos/dist/aos.js"></script>
     <script src="{{ asset('/') }}assets/jm-homepage2/dist/assets/fancyapps/ui/dist/fancybox/fancybox.umd.js"></script>
     <script src="{{ asset('/') }}assets/jm-homepage2/dist/assets/jquery/dist/jquery.min.js"></script>

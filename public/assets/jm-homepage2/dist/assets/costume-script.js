@@ -120,3 +120,55 @@ window.addEventListener('scroll', updateNavbarStyles);
 // Check scroll position on page load
 document.addEventListener('DOMContentLoaded', updateNavbarStyles);
 
+// #################################################################################################################################
+// Scrolling Up Down
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollUpButton = document.getElementById("scrollUp");
+  const scrollDownButton = document.getElementById("scrollDown");
+
+  // Fungsi untuk menggulir ke atas
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  // Fungsi untuk menggulir ke bawah
+  function scrollToBottom() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+
+  // Tampilkan atau sembunyikan tombol berdasarkan posisi scroll
+  window.addEventListener("scroll", function () {
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.body.scrollHeight;
+    const windowHeight = window.innerHeight;
+
+    // Tampilkan tombol scroll up jika tidak di posisi paling atas
+    if (scrollPosition > 0) {
+      scrollUpButton.style.display = "block";
+    } else {
+      scrollUpButton.style.display = "none";
+    }
+
+    // Tampilkan tombol scroll down jika tidak di posisi paling bawah
+    if (scrollPosition + windowHeight < documentHeight - 10) {
+      scrollDownButton.style.display = "block";
+    } else {
+      scrollDownButton.style.display = "none";
+    }
+  });
+
+  // Tambahkan event listener untuk tombol scroll up
+  scrollUpButton.addEventListener("click", scrollToTop);
+
+  // Tambahkan event listener untuk tombol scroll down
+  scrollDownButton.addEventListener("click", scrollToBottom);
+});
+
+
+

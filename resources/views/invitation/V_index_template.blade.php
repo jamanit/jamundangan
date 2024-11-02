@@ -79,7 +79,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Konfirmasi Template</h5>
+                    <h5 class="modal-title">Konfirmasi Templat</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -140,13 +140,13 @@
                                                            ${item.percent_discount <= 0 ?
                                                                 `<h6 class="text-success">Rp. ${item.price}</h6>` :
                                                                 `<div class="row">
-                                                                                                                                                                                                                                <div class="col-md-6 text-nowrap">
-                                                                                                                                                                                                                                    <h6><del>Rp. ${item.price}</del></h6>
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                <div class="col-md-6 text-nowrap">
-                                                                                                                                                                                                                                    <h6 class="text-success">Rp. ${item.total_amount}</h6>
-                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                             </div>`
+                                                                                                                                                                                                                                    <div class="col-md-6 text-nowrap">
+                                                                                                                                                                                                                                        <h6><del>Rp. ${item.price}</del></h6>
+                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                    <div class="col-md-6 text-nowrap">
+                                                                                                                                                                                                                                        <h6 class="text-success">Rp. ${item.total_amount}</h6>
+                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                 </div>`
                                                             }
 
                                                         </div>

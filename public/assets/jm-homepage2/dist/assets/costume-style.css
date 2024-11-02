@@ -28,3 +28,14 @@
     opacity: 1;
     pointer-events: all;
 }
+
+/* Scrolling Up Down*/
+.scroll-button {
+    transition: opacity 0.3s;
+    opacity: 0.8;
+    z-index: 20;
+}
+
+.scroll-button:hover {
+    opacity: 1;
+}
