@@ -41,4 +41,21 @@
 @endpush
 
 @push('scripts')
+    <script>
+        $(document).ready(function() {
+            function checkEmailVerification() {
+                $.get('/email/check-email-verified', function(response) {
+                    if (response.verified) {
+                        window.location.href = '/dashboard';
+                    }
+                }).fail(function() {
+                    console.log('User not authenticated');
+                });
+            }
+
+            checkEmailVerification();
+
+            setInterval(checkEmailVerification, 5000);
+        });
+    </script>
 @endpush

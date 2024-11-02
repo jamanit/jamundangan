@@ -2,33 +2,48 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('home'); 
 // });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/send_contact_form', [App\Http\Controllers\HomeController::class, 'send_contact_form'])->name('home.send_contact_form');
 Route::get('/load_more_template', [App\Http\Controllers\HomeController::class, 'load_more_template'])->name('home.load_more_template');
 
+// route auth
 Auth::routes(['verify' => true, 'reset' => true]);
 
 Route::get('/email/verify', function () {
-    return view('auth.verify'); // Ganti dengan view yang sesuai
+    return view('auth.verify');
 })->middleware(['auth'])->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (Request $request) {
     $request->user()->markEmailAsVerified();
-
     return redirect('/dashboard')->with('verified', true);
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('status', 'Verification link sent!');
 })->middleware(['auth'])->name('verification.send');
 
+Route::get('/email/check-email-verified', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        $isVerified = !is_null($user->email_verified_at);
+        if ($isVerified) {
+            session()->flash('verified', true);
+            return response()->json(['verified' => true]);
+        }
+        return response()->json(['verified' => $isVerified]);
+    }
+    return response()->json(['error' => 'User not authenticated'], 401);
+})->middleware('auth');
+
+// route system
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['notUser'])->group(function () {
         Route::resource('menus', App\Http\Controllers\C_menu::class);
